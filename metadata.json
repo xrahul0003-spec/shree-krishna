@@ -1,0 +1,6 @@
+{
+  "name": "Shree Krishana Dharamshala Trust",
+  "description": "Shree Krishana Dharamshala Trust offers comfortable AC, Non-AC and family room accommodation opposite Varanasi Cantt Railway Station in Varanasi, Uttar Pradesh.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
