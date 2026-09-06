@@ -19,8 +19,13 @@ export const Footer: React.FC<FooterProps> = ({ onBookClick }) => {
           {/* Col 1: Business Identity & Overview */}
           <div className="lg:col-span-5 space-y-4">
             <div className="flex items-center gap-3">
-              <div className="w-12 h-12 rounded-2xl bg-[#927148] flex items-center justify-center text-[#FDFBF7] font-serif font-bold text-xl border border-white/10 shrink-0">
-                SK
+              <div className="w-12 h-12 rounded-2xl overflow-hidden bg-[#F0EBE3] flex items-center justify-center border border-white/20 shrink-0">
+                <img
+                  src="/images/copy.jpg"
+                  alt={dharamshalaConfig.businessName}
+                  className="w-full h-full object-cover object-center"
+                  referrerPolicy="no-referrer"
+                />
               </div>
               <div>
                 <h3 className="font-serif text-xl sm:text-2xl font-bold text-white leading-tight">

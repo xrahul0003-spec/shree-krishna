@@ -87,8 +87,13 @@ export const Header: React.FC<HeaderProps> = ({ onBookClick }) => {
             onClick={(e) => handleNavClick(e, '#hero')}
             className="group flex items-center gap-3 focus:outline-none focus:ring-2 focus:ring-[#927148] rounded-2xl p-1 -ml-1"
           >
-            <div className="w-11 h-11 bg-[#927148] rounded-2xl flex items-center justify-center text-[#FDFBF7] font-serif font-bold text-lg shadow-xs shrink-0 border border-[#8B6E4E]/30">
-              SK
+            <div className="w-11 h-11 rounded-2xl overflow-hidden shadow-xs shrink-0 border border-[#8B6E4E]/30 bg-[#F0EBE3] flex items-center justify-center">
+              <img
+                src="/images/copy.jpg"
+                alt={dharamshalaConfig.businessName}
+                className="w-full h-full object-cover object-center"
+                referrerPolicy="no-referrer"
+              />
             </div>
             <div className="flex flex-col">
               <span className="font-serif text-lg sm:text-xl leading-tight font-bold text-[#2D2A26] group-hover:text-[#927148] transition-colors">

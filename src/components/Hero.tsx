@@ -14,9 +14,15 @@ export const Hero: React.FC<HeroProps> = ({ onViewRooms }) => {
         {/* Background photo with subtle atmospheric gradient */}
         <div className="absolute inset-0 z-0">
           <img
-            src="https://images.unsplash.com/photo-1548013146-72479768bada?q=80&w=1920&auto=format&fit=crop"
-            alt="Shree Krishana Dharamshala Varanasi Building"
-            className="w-full h-full object-cover object-center opacity-35"
+            src="/images/copy.jpg"
+            alt="Shree Krishana Dharamshala Trust Varanasi"
+            className="w-full h-full object-cover object-center opacity-45"
+            onError={(e) => {
+              const target = e.currentTarget;
+              if (target.src !== 'https://images.unsplash.com/photo-1548013146-72479768bada?q=80&w=1920&auto=format&fit=crop') {
+                target.src = 'https://images.unsplash.com/photo-1548013146-72479768bada?q=80&w=1920&auto=format&fit=crop';
+              }
+            }}
             referrerPolicy="no-referrer"
           />
           {/* Bento watermark typography element */}

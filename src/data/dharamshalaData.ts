@@ -256,7 +256,7 @@ export const dharamshalaConfig: DharamshalaConfig = {
       title: "Main Entrance & Dharamshala Facade",
       titleHindi: "मुख्य प्रवेश द्वार एवं धर्मशाला भवन (इंग्लिशिया लाइन)",
       category: "Property",
-      imageUrl: "/gallery/unnamed (2).jpg",
+      imageUrl: "/images/copy.jpg",
       fallbackUrl: "https://images.unsplash.com/photo-1548013146-72479768bada?q=80&w=1200&auto=format&fit=crop",
       description: "Historic main entrance archway and official bilingual trust signage of Shree Krishna Dharamshala Trust opposite Varanasi Cantt Railway Station.",
       badge: "Main Entrance"
@@ -306,7 +306,7 @@ export const dharamshalaConfig: DharamshalaConfig = {
       title: "Evening Mandir with Festive Illumination",
       titleHindi: "संध्या आरती एवं उत्सव आलोकित मंदिर प्रांगण",
       category: "Property",
-      imageUrl: "/gallery/unnamed (1).jpg",
+      imageUrl: "/images/aarti.jpg",
       fallbackUrl: "https://images.unsplash.com/photo-1519817650390-64a93db51149?q=80&w=1200&auto=format&fit=crop",
       description: "Courtyard temple bathed in festive green and golden lighting under lush trees during evening bhajan and aarti hours.",
       badge: "Evening Aarti"
@@ -336,7 +336,7 @@ export const dharamshalaConfig: DharamshalaConfig = {
       title: "Varanasi Ganga Ghats at Dusk",
       titleHindi: "संध्या वेला में पावन गंगा घाट दर्शन",
       category: "Location",
-      imageUrl: "/gallery/unnamed (4).webp",
+      imageUrl: "/images/images.jpg",
       fallbackUrl: "https://images.unsplash.com/photo-1561361513-2d000a50f0dc?q=80&w=1200&auto=format&fit=crop",
       description: "Pilgrims gathered on the sacred ghat steps of Varanasi during sunset hours, illuminated by tall decorative heritage lamps.",
       badge: "Ganga Ghats"
