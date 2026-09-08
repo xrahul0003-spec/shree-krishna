@@ -4,9 +4,10 @@ import { dharamshalaConfig } from '../data/dharamshalaData';
 
 interface FooterProps {
   onBookClick: () => void;
+  onOpenLegal?: (doc: 'privacy' | 'terms') => void;
 }
 
-export const Footer: React.FC<FooterProps> = ({ onBookClick }) => {
+export const Footer: React.FC<FooterProps> = ({ onBookClick, onOpenLegal }) => {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -82,6 +83,24 @@ export const Footer: React.FC<FooterProps> = ({ onBookClick }) => {
               <li>
                 <a href="#contact" className="hover:text-white transition-colors">Contact Us</a>
               </li>
+              <li className="pt-1">
+                <button
+                  type="button"
+                  onClick={() => onOpenLegal?.('privacy')}
+                  className="hover:text-[#D4AF37] transition-colors cursor-pointer text-left text-white/70"
+                >
+                  Privacy Policy
+                </button>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  onClick={() => onOpenLegal?.('terms')}
+                  className="hover:text-[#D4AF37] transition-colors cursor-pointer text-left text-white/70"
+                >
+                  Terms &amp; Conditions
+                </button>
+              </li>
             </ul>
           </div>
 
@@ -132,12 +151,28 @@ export const Footer: React.FC<FooterProps> = ({ onBookClick }) => {
               Registered Charitable Trust (Regd. 12 June 1933)
             </p>
           </div>
-          <div className="flex items-center gap-4">
+          <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4">
+            <button
+              type="button"
+              onClick={() => onOpenLegal?.('privacy')}
+              className="text-white/70 hover:text-white transition-colors cursor-pointer"
+            >
+              Privacy Policy
+            </button>
+            <span className="text-white/30">•</span>
+            <button
+              type="button"
+              onClick={() => onOpenLegal?.('terms')}
+              className="text-white/70 hover:text-white transition-colors cursor-pointer"
+            >
+              Terms &amp; Conditions
+            </button>
+            <span className="text-white/30">•</span>
             <span className="text-[#D4AF37] font-medium">Varanasi, Uttar Pradesh</span>
             <button
               type="button"
               onClick={scrollToTop}
-              className="inline-flex items-center gap-1 text-white/70 hover:text-white transition-colors cursor-pointer"
+              className="inline-flex items-center gap-1 text-white/70 hover:text-white transition-colors cursor-pointer ml-1"
             >
               <span>Back to top</span>
               <ArrowUp className="w-3.5 h-3.5" />

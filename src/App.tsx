@@ -23,11 +23,13 @@ import { BookingForm } from './components/BookingForm';
 import { ContactCTA } from './components/ContactCTA';
 import { Footer } from './components/Footer';
 import { MobileBottomBar } from './components/MobileBottomBar';
+import { LegalModal, LegalDocType } from './components/LegalModal';
 import { RoomType } from './types';
 
 export default function App() {
   const [selectedRoomForModal, setSelectedRoomForModal] = useState<RoomType | null>(null);
   const [selectedRoomForBooking, setSelectedRoomForBooking] = useState<RoomType | null>(null);
+  const [legalModalDoc, setLegalModalDoc] = useState<LegalDocType | null>(null);
 
   const scrollToBooking = (room?: RoomType) => {
     if (room) {
@@ -91,10 +93,21 @@ export default function App() {
       </main>
 
       {/* Footer */}
-      <Footer onBookClick={() => scrollToBooking()} />
+      <Footer
+        onBookClick={() => scrollToBooking()}
+        onOpenLegal={(doc) => setLegalModalDoc(doc)}
+      />
 
       {/* Sticky Mobile Bottom Navigation Bar */}
       <MobileBottomBar onBookClick={() => scrollToBooking()} />
+
+      {/* Legal Policies Modal (Privacy Policy & Terms) */}
+      {legalModalDoc && (
+        <LegalModal
+          initialDoc={legalModalDoc}
+          onClose={() => setLegalModalDoc(null)}
+        />
+      )}
 
       {/* Room Details Modal */}
       {selectedRoomForModal && (
