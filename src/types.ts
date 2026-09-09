@@ -53,6 +53,7 @@ export interface DharamshalaConfig {
   phone: string;
   phoneDisplay: string;
   whatsapp: string;
+  email?: string;
   mapUrl: string;
   googleMapEmbedQuery: string;
   checkInTime: string;

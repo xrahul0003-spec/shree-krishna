@@ -257,7 +257,15 @@ export const LegalModal: React.FC<LegalModalProps> = ({ initialDoc, onClose }) =
                   <p><strong>Address:</strong> In front of Cantt Railway Station, Englishia Line, Vijay Nagar Colony, Varanasi Cantonment, Varanasi, Uttar Pradesh 221002, India</p>
                   <p><strong>Location:</strong> Directly opposite Varanasi Cantt Railway Station</p>
                   <p><strong>Contact Number:</strong> +91 8788041018</p>
-                  <p><strong>Email Address:</strong> [OFFICIAL EMAIL ADDRESS]</p>
+                  <p>
+                    <strong>Email Address:</strong>{' '}
+                    <a
+                      href="mailto:akashomkar0001@gmail.com"
+                      className="text-[#927148] hover:text-[#7D5F3B] hover:underline font-medium"
+                    >
+                      akashomkar0001@gmail.com
+                    </a>
+                  </p>
                 </div>
               </section>
             </div>
@@ -415,7 +423,15 @@ export const LegalModal: React.FC<LegalModalProps> = ({ initialDoc, onClose }) =
                   <p><strong>Address:</strong> In front of Cantt Railway Station, Englishia Line, Vijay Nagar Colony, Varanasi Cantonment, Varanasi, Uttar Pradesh 221002, India</p>
                   <p><strong>Location:</strong> Directly opposite Varanasi Cantt Railway Station</p>
                   <p><strong>Contact Phone:</strong> +91 8788041018</p>
-                  <p><strong>Email Address:</strong> [OFFICIAL EMAIL ADDRESS]</p>
+                  <p>
+                    <strong>Email Address:</strong>{' '}
+                    <a
+                      href="mailto:akashomkar0001@gmail.com"
+                      className="text-[#927148] hover:text-[#7D5F3B] hover:underline font-medium"
+                    >
+                      akashomkar0001@gmail.com
+                    </a>
+                  </p>
                 </div>
               </section>
             </div>

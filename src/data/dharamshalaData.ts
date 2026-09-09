@@ -30,6 +30,7 @@ export const dharamshalaConfig: DharamshalaConfig = {
   phone: "8788041018",
   phoneDisplay: "+91 8788041018",
   whatsapp: "918788041018",
+  email: "akashomkar0001@gmail.com",
   
   // Editable map URL and embed query
   mapUrl: "https://www.google.com/maps/search/?api=1&query=Varanasi+Cantt+Railway+Station+Englishia+Line+Vijay+Nagar+Colony+Varanasi",

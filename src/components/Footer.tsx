@@ -1,5 +1,5 @@
 import React from 'react';
-import { Phone, MapPin, MessageCircle, ArrowUp } from 'lucide-react';
+import { Phone, MapPin, MessageCircle, ArrowUp, Mail } from 'lucide-react';
 import { dharamshalaConfig } from '../data/dharamshalaData';
 
 interface FooterProps {
@@ -136,6 +136,18 @@ export const Footer: React.FC<FooterProps> = ({ onBookClick, onOpenLegal }) => {
                 WhatsApp: +91 {dharamshalaConfig.phone}
               </a>
             </div>
+
+            {dharamshalaConfig.email && (
+              <div className="flex items-center gap-2.5 text-xs sm:text-sm text-white/90">
+                <Mail className="w-4 h-4 text-[#D4AF37] shrink-0" />
+                <a
+                  href={`mailto:${dharamshalaConfig.email}`}
+                  className="hover:text-[#D4AF37] font-medium truncate"
+                >
+                  {dharamshalaConfig.email}
+                </a>
+              </div>
+            )}
           </div>
 
         </div>
