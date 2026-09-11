@@ -1,5 +1,5 @@
 import React from 'react';
-import { MapPin, Navigation, Train, Clock, ExternalLink, CheckCircle } from 'lucide-react';
+import { MapPin, Navigation, Train, ExternalLink, CheckCircle, Phone, MessageCircle, Plane } from 'lucide-react';
 import { dharamshalaConfig } from '../data/dharamshalaData';
 
 export const Location: React.FC = () => {
@@ -11,13 +11,13 @@ export const Location: React.FC = () => {
         <div className="text-center max-w-2xl mx-auto mb-12">
           <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-[#F0EBE3] text-[#8B6E4E] text-xs font-semibold uppercase tracking-wider mb-3">
             <Train className="w-3.5 h-3.5 text-[#927148]" />
-            Prime Station Proximity
+            Location &amp; Access
           </div>
           <h2 className="font-serif text-3xl sm:text-4xl font-bold text-[#2D2A26] mb-4">
-            Conveniently Located in Varanasi
+            Location of Birla Dharamshala, Ayodhya
           </h2>
           <p className="text-[#2D2A26]/75 text-sm sm:text-base leading-relaxed">
-            Situated directly opposite Varanasi Cantt Railway Station. Arrive by train, walk straight across, and check in without long transit or expensive taxi commutes.
+            Easily accessible Dharamshala near Ram Mandir, Ayodhya Junction
           </p>
         </div>
 
@@ -32,15 +32,15 @@ export const Location: React.FC = () => {
               </div>
               <div>
                 <p className="font-serif font-bold text-[#2D2A26] text-base">
-                  Opposite Varanasi Cantt Railway Station
+                  {dharamshalaConfig.businessName}
                 </p>
                 <p className="text-xs text-[#8B6E4E] font-medium mt-0.5">
-                  1–2 minutes walking distance from Platform 1 exit.
+                  {dharamshalaConfig.addressEnglish}
                 </p>
               </div>
             </div>
 
-            {/* Official Address in Hindi and English */}
+            {/* Official Address */}
             <div className="space-y-4">
               <div>
                 <h4 className="text-[10px] font-bold uppercase tracking-wider text-[#8B6E4E] mb-1.5">
@@ -61,47 +61,64 @@ export const Location: React.FC = () => {
               </div>
             </div>
 
-            {/* Walking Directions */}
+            {/* Reaching Birla Dharamshala Ayodhya */}
             <div className="pt-4 border-t border-[#EAE4D9]">
               <h4 className="text-xs font-bold uppercase tracking-wider text-[#2D2A26] mb-3 flex items-center gap-1.5">
                 <Navigation className="w-4 h-4 text-[#927148]" />
-                How to Reach on Foot from Varanasi Cantt Station:
+                How to Reach:
               </h4>
               <ul className="space-y-2 text-xs sm:text-sm text-[#2D2A26]/75">
                 <li className="flex items-start gap-2">
                   <CheckCircle className="w-4 h-4 text-[#25D366] shrink-0 mt-0.5" />
-                  <span>Exit from Varanasi Cantt Railway Station main concourse (Platform 1 gate).</span>
+                  <span><strong>From Ayodhya Junction (Ayodhya Dham Station):</strong> Located conveniently along Ayodhya Jct Road, just a few minutes drive by e-rickshaw or auto.</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <CheckCircle className="w-4 h-4 text-[#25D366] shrink-0 mt-0.5" />
-                  <span>Look directly across the road towards Englishia Line / Vijay Nagar Colony.</span>
+                  <span><strong>From Shri Ram Janmabhoomi Mandir:</strong> Direct quick connectivity (approx. 1.8 km) via Sai Nagar, making early morning and evening temple visits effortless.</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <CheckCircle className="w-4 h-4 text-[#25D366] shrink-0 mt-0.5" />
-                  <span>Take the pedestrian crossing to reach Shree Krishana Dharamshala Trust.</span>
+                  <span><strong>From Ayodhya Cantt Station:</strong> Direct taxi and auto routes along main arterial roads.</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-4 h-4 text-[#25D366] shrink-0 mt-0.5" />
+                  <span><strong>From Maharishi Valmiki International Airport:</strong> Approx. 15-20 minutes by airport cab or pre-paid taxi.</span>
                 </li>
               </ul>
             </div>
 
-            {/* Action Buttons */}
-            <div className="pt-4 border-t border-[#EAE4D9] flex flex-wrap gap-3">
+            {/* Action Buttons: Get Directions, Call Now, WhatsApp */}
+            <div className="pt-4 border-t border-[#EAE4D9] flex flex-wrap gap-2.5">
               <a
                 id="location-get-directions-btn"
                 href={dharamshalaConfig.mapUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#8B6E4E] hover:bg-[#7D5F3B] text-white font-bold text-xs sm:text-sm shadow-xs transition-colors"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#8B6E4E] hover:bg-[#7D5F3B] text-white font-bold text-xs sm:text-sm shadow-xs transition-colors"
               >
                 <Navigation className="w-4 h-4 text-[#FDFBF7]" />
-                <span>Get Directions (Google Maps)</span>
-                <ExternalLink className="w-3.5 h-3.5 opacity-70" />
+                <span>Get Directions</span>
+                <ExternalLink className="w-3 h-3 opacity-70" />
               </a>
 
               <a
-                href={`tel:${dharamshalaConfig.phone}`}
-                className="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-white border border-[#EAE4D9] hover:bg-[#F0EBE3] text-[#2D2A26] font-semibold text-xs sm:text-sm transition-colors"
+                id="location-call-now-btn"
+                href={`tel:${dharamshalaConfig.phoneTel}`}
+                className="inline-flex items-center gap-2 px-4 py-2.5 rounded-full bg-white border border-[#EAE4D9] hover:bg-[#F0EBE3] text-[#2D2A26] font-semibold text-xs sm:text-sm transition-colors"
               >
-                <span>Call for Route Assistance</span>
+                <Phone className="w-3.5 h-3.5 text-[#25D366]" />
+                <span>Call Now ({dharamshalaConfig.phoneDisplay})</span>
+              </a>
+
+              <a
+                id="location-whatsapp-btn"
+                href={`https://wa.me/${dharamshalaConfig.whatsapp}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-4 py-2.5 rounded-full bg-emerald-50 border border-emerald-300 hover:bg-emerald-100 text-emerald-800 font-semibold text-xs sm:text-sm transition-colors"
+              >
+                <MessageCircle className="w-3.5 h-3.5 text-[#25D366]" />
+                <span>WhatsApp</span>
               </a>
             </div>
 
@@ -112,7 +129,7 @@ export const Location: React.FC = () => {
             <div className="relative rounded-3xl overflow-hidden border border-[#EAE4D9] shadow-xs h-80 sm:h-96 w-full bg-[#E5E0D5]">
               {/* Google Maps Embed iframe */}
               <iframe
-                title="Shree Krishana Dharamshala Trust Location"
+                title="Birla Dharamshala Ayodhya Location"
                 src={`https://maps.google.com/maps?q=${encodeURIComponent(dharamshalaConfig.googleMapEmbedQuery)}&t=&z=15&ie=UTF8&iwloc=&output=embed`}
                 className="w-full h-full border-0"
                 loading="lazy"
@@ -121,21 +138,18 @@ export const Location: React.FC = () => {
             </div>
 
             <div className="bg-white p-4 rounded-2xl border border-[#EAE4D9] flex items-center justify-between text-xs text-[#2D2A26]/75 shadow-xs">
-              <div className="flex items-center gap-2">
-                <Clock className="w-4 h-4 text-[#927148]" />
-                <span>Local e-rickshaws, autos & taxis readily available right outside.</span>
-              </div>
+              <span>Sai Nagar, Ayodhya Jct Road, Ayodhya 224123</span>
               <a
                 href={dharamshalaConfig.mapUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-[#8B6E4E] hover:underline font-bold flex items-center gap-1"
+                className="text-[#927148] font-bold hover:underline inline-flex items-center gap-1"
               >
-                Open in App
+                <span>View Full Map</span>
+                <ExternalLink className="w-3 h-3" />
               </a>
             </div>
           </div>
-
         </div>
 
       </div>

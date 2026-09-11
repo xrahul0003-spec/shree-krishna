@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Send, Calendar, Users, Phone, User, MessageCircle, AlertCircle, CheckCircle2, Bed } from 'lucide-react';
+import { Send, Calendar, Users, Phone, User, MessageCircle, AlertCircle, CheckCircle2, BedDouble, Sparkles } from 'lucide-react';
 import { RoomType } from '../types';
 import { dharamshalaConfig } from '../data/dharamshalaData';
 
@@ -58,15 +58,14 @@ export const BookingForm: React.FC<BookingFormProps> = ({ selectedRoom, onClearS
       return;
     }
 
-    // Prepare specified pre-filled message according to user instructions:
-    // "Namaste, I would like to enquire about room availability at Shree Krishana Dharamshala Trust. My check-in date is [DATE], check-out date is [DATE], guests are [NUMBER], and preferred room is [ROOM TYPE]. Please share availability and tariff."
-    let message = `Namaste, I would like to enquire about room availability at Shree Krishana Dharamshala Trust. My check-in date is ${checkInDate}, check-out date is ${checkOutDate}, guests are ${numberOfGuests}, and preferred room is ${roomType}. Please share availability and tariff.`;
+    // Prepare pre-filled message for Birla Dharamshala Ayodhya:
+    let message = `Namaste Birla Dharamshala Ayodhya, I would like to enquire about room availability. My check-in date is ${checkInDate}, check-out date is ${checkOutDate}, guests count is ${numberOfGuests}, and preferred room category is ${roomType}. Please share current availability and room tariff.`;
     
     if (fullName.trim()) {
       message += ` (Guest Name: ${fullName.trim()}, Phone: ${mobileNumber.trim()})`;
     }
     if (specialRequirements.trim()) {
-      message += ` (Note: ${specialRequirements.trim()})`;
+      message += ` (Special Note: ${specialRequirements.trim()})`;
     }
 
     const encodedMessage = encodeURIComponent(message);
@@ -99,28 +98,28 @@ export const BookingForm: React.FC<BookingFormProps> = ({ selectedRoom, onClearS
         <div className="text-center max-w-2xl mx-auto mb-10">
           <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-[#F0EBE3] text-[#8B6E4E] text-xs font-semibold uppercase tracking-wider mb-3">
             <Calendar className="w-3.5 h-3.5 text-[#927148]" />
-            Direct Enquiry
+            Direct Enquiry &amp; Availability Check
           </div>
           <h2 className="font-serif text-3xl sm:text-4xl font-bold text-[#2D2A26] mb-4">
-            Plan Your Stay in Varanasi
+            Plan Your Stay in Ayodhya
           </h2>
           <p className="text-[#2D2A26]/75 text-sm sm:text-base leading-relaxed">
-            Fill out the form below to send a direct booking enquiry. We will check room availability and respond immediately via WhatsApp or telephone.
+            Fill out the form below to send an instant room enquiry to Birla Dharamshala. We will check availability and respond immediately via telephone or WhatsApp.
           </p>
         </div>
 
         {/* Bento Form Container */}
         <div className="bg-white rounded-3xl p-6 sm:p-10 border border-[#EAE4D9] shadow-xs">
           
-          {/* Transparent Notice */}
+          {/* Notice */}
           <div className="mb-8 p-4 rounded-2xl bg-[#F0EBE3] border border-[#EAE4D9] flex items-start gap-3">
             <AlertCircle className="w-5 h-5 text-[#927148] shrink-0 mt-0.5" />
             <div className="text-xs sm:text-sm text-[#2D2A26]/80 space-y-1">
               <p className="font-bold text-[#2D2A26]">
-                Enquiry Process Notice:
+                Birla Dharamshala Direct Booking Policy:
               </p>
               <p>
-                Submission does not automatically confirm a room reservation. Room availability and tariff will be confirmed directly by our help desk via telephone or WhatsApp.
+                Birla Dharamshala provides affordable and peaceful accommodation for pilgrims and visitors in Ayodhya. For room booking and enquiry, please contact directly through phone (<strong>8788041018</strong>) or WhatsApp.
               </p>
             </div>
           </div>
@@ -134,205 +133,189 @@ export const BookingForm: React.FC<BookingFormProps> = ({ selectedRoom, onClearS
                 Enquiry Generated!
               </h3>
               <p className="text-[#2D2A26]/70 text-sm max-w-md mx-auto">
-                Your WhatsApp chat has opened with the pre-filled enquiry for Shree Krishana Dharamshala Trust (+91 8788041018). If it did not open automatically, click below.
+                Your WhatsApp chat has opened with the pre-filled enquiry for Birla Dharamshala, Ayodhya (+91 {dharamshalaConfig.phoneDisplay}). If it did not open automatically, click below.
               </p>
               <div className="flex flex-wrap justify-center gap-3 pt-2">
-                <button
-                  type="button"
-                  onClick={handleSubmit}
-                  className="px-6 py-3 rounded-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-sm flex items-center gap-2 shadow-xs cursor-pointer"
+                <a
+                  href={`https://wa.me/${dharamshalaConfig.whatsapp}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-6 py-3 rounded-full bg-[#25D366] text-white font-bold text-xs sm:text-sm flex items-center gap-2"
                 >
                   <MessageCircle className="w-4 h-4" />
-                  Re-open WhatsApp Chat
-                </button>
+                  <span>Open WhatsApp Again</span>
+                </a>
+                <a
+                  href={`tel:${dharamshalaConfig.phoneTel}`}
+                  className="px-6 py-3 rounded-full bg-[#927148] text-white font-bold text-xs sm:text-sm flex items-center gap-2"
+                >
+                  <Phone className="w-4 h-4" />
+                  <span>Call Help Desk (8788041018)</span>
+                </a>
                 <button
                   type="button"
                   onClick={handleReset}
-                  className="px-5 py-3 rounded-full bg-white border border-[#EAE4D9] text-[#2D2A26] hover:bg-[#F0EBE3] font-semibold text-sm cursor-pointer"
+                  className="px-6 py-3 rounded-full border border-[#EAE4D9] text-[#2D2A26] font-bold text-xs sm:text-sm hover:bg-[#F0EBE3]"
                 >
-                  Submit Another Enquiry
+                  Send Another Enquiry
                 </button>
               </div>
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-6">
-              
               {validationError && (
-                <div className="p-3 bg-red-50 border border-red-200 text-red-700 text-xs rounded-xl font-medium">
+                <div className="p-4 rounded-2xl bg-rose-50 border border-rose-200 text-rose-800 text-xs sm:text-sm">
                   {validationError}
                 </div>
               )}
 
-              {/* Guest Details */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                {/* Full Name */}
                 <div>
-                  <label htmlFor="fullName" className="block text-[10px] font-bold uppercase tracking-wider text-[#8B6E4E] mb-1.5">
-                    Full Name <span className="text-red-500">*</span>
+                  <label className="text-xs font-bold uppercase tracking-wider text-[#8B6E4E] mb-2 block">
+                    Your Full Name *
                   </label>
                   <div className="relative">
-                    <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-[#2D2A26]/40">
-                      <User className="w-4 h-4" />
-                    </div>
                     <input
                       type="text"
-                      id="fullName"
-                      required
+                      placeholder="e.g. Ramesh Chandra Sharma"
                       value={fullName}
                       onChange={(e) => setFullName(e.target.value)}
-                      placeholder="e.g. Ramesh Kumar"
-                      className="w-full pl-10 pr-3.5 py-3 bg-[#FDFBF7] border border-[#EAE4D9] rounded-2xl text-sm text-[#2D2A26] focus:outline-none focus:ring-2 focus:ring-[#927148] focus:border-[#927148]"
+                      required
+                      className="w-full px-4 py-3 pl-11 rounded-2xl border border-[#EAE4D9] bg-[#FDFBF7] text-sm text-[#2D2A26] focus:outline-none focus:ring-2 focus:ring-[#927148]"
                     />
+                    <User className="w-4 h-4 text-[#8B6E4E] absolute left-4 top-3.5" />
                   </div>
                 </div>
 
+                {/* Mobile Number */}
                 <div>
-                  <label htmlFor="mobileNumber" className="block text-[10px] font-bold uppercase tracking-wider text-[#8B6E4E] mb-1.5">
-                    Mobile Number (WhatsApp) <span className="text-red-500">*</span>
+                  <label className="text-xs font-bold uppercase tracking-wider text-[#8B6E4E] mb-2 block">
+                    10-Digit Mobile Number *
                   </label>
                   <div className="relative">
-                    <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-[#2D2A26]/40">
-                      <Phone className="w-4 h-4" />
-                    </div>
                     <input
                       type="tel"
-                      id="mobileNumber"
-                      required
+                      placeholder="e.g. 9876543210"
                       value={mobileNumber}
                       onChange={(e) => setMobileNumber(e.target.value)}
-                      placeholder="e.g. 9876543210"
-                      className="w-full pl-10 pr-3.5 py-3 bg-[#FDFBF7] border border-[#EAE4D9] rounded-2xl text-sm text-[#2D2A26] focus:outline-none focus:ring-2 focus:ring-[#927148] focus:border-[#927148]"
-                    />
-                  </div>
-                </div>
-              </div>
-
-              {/* Dates */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                <div>
-                  <label htmlFor="checkInDate" className="block text-[10px] font-bold uppercase tracking-wider text-[#8B6E4E] mb-1.5">
-                    Check-in Date <span className="text-red-500">*</span>
-                  </label>
-                  <div className="relative">
-                    <input
-                      type="date"
-                      id="checkInDate"
-                      min={todayStr}
                       required
-                      value={checkInDate}
-                      onChange={(e) => setCheckInDate(e.target.value)}
-                      className="w-full px-4 py-3 bg-[#FDFBF7] border border-[#EAE4D9] rounded-2xl text-sm text-[#2D2A26] focus:outline-none focus:ring-2 focus:ring-[#927148] focus:border-[#927148]"
+                      className="w-full px-4 py-3 pl-11 rounded-2xl border border-[#EAE4D9] bg-[#FDFBF7] text-sm text-[#2D2A26] focus:outline-none focus:ring-2 focus:ring-[#927148]"
                     />
+                    <Phone className="w-4 h-4 text-[#8B6E4E] absolute left-4 top-3.5" />
                   </div>
                 </div>
 
+                {/* Check-In Date */}
                 <div>
-                  <label htmlFor="checkOutDate" className="block text-[10px] font-bold uppercase tracking-wider text-[#8B6E4E] mb-1.5">
-                    Check-out Date <span className="text-red-500">*</span>
+                  <label className="text-xs font-bold uppercase tracking-wider text-[#8B6E4E] mb-2 block">
+                    Check-In Date *
                   </label>
-                  <div className="relative">
-                    <input
-                      type="date"
-                      id="checkOutDate"
-                      min={checkInDate || todayStr}
-                      required
-                      value={checkOutDate}
-                      onChange={(e) => setCheckOutDate(e.target.value)}
-                      className="w-full px-4 py-3 bg-[#FDFBF7] border border-[#EAE4D9] rounded-2xl text-sm text-[#2D2A26] focus:outline-none focus:ring-2 focus:ring-[#927148] focus:border-[#927148]"
-                    />
-                  </div>
+                  <input
+                    type="date"
+                    min={todayStr}
+                    value={checkInDate}
+                    onChange={(e) => setCheckInDate(e.target.value)}
+                    required
+                    className="w-full px-4 py-3 rounded-2xl border border-[#EAE4D9] bg-[#FDFBF7] text-sm text-[#2D2A26] focus:outline-none focus:ring-2 focus:ring-[#927148]"
+                  />
                 </div>
-              </div>
 
-              {/* Guests & Room Selection */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                {/* Check-Out Date */}
                 <div>
-                  <label htmlFor="numberOfGuests" className="block text-[10px] font-bold uppercase tracking-wider text-[#8B6E4E] mb-1.5">
-                    Number of Guests <span className="text-red-500">*</span>
+                  <label className="text-xs font-bold uppercase tracking-wider text-[#8B6E4E] mb-2 block">
+                    Check-Out Date *
+                  </label>
+                  <input
+                    type="date"
+                    min={checkInDate || todayStr}
+                    value={checkOutDate}
+                    onChange={(e) => setCheckOutDate(e.target.value)}
+                    required
+                    className="w-full px-4 py-3 rounded-2xl border border-[#EAE4D9] bg-[#FDFBF7] text-sm text-[#2D2A26] focus:outline-none focus:ring-2 focus:ring-[#927148]"
+                  />
+                </div>
+
+                {/* Number of Guests */}
+                <div>
+                  <label className="text-xs font-bold uppercase tracking-wider text-[#8B6E4E] mb-2 block">
+                    Pilgrims / Number of Guests
                   </label>
                   <div className="relative">
-                    <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-[#2D2A26]/40">
-                      <Users className="w-4 h-4" />
-                    </div>
                     <select
-                      id="numberOfGuests"
                       value={numberOfGuests}
                       onChange={(e) => setNumberOfGuests(e.target.value)}
-                      className="w-full pl-10 pr-3.5 py-3 bg-[#FDFBF7] border border-[#EAE4D9] rounded-2xl text-sm text-[#2D2A26] focus:outline-none focus:ring-2 focus:ring-[#927148] focus:border-[#927148]"
+                      className="w-full px-4 py-3 pl-11 rounded-2xl border border-[#EAE4D9] bg-[#FDFBF7] text-sm text-[#2D2A26] focus:outline-none focus:ring-2 focus:ring-[#927148]"
                     >
                       <option value="1">1 Guest</option>
                       <option value="2">2 Guests</option>
                       <option value="3">3 Guests</option>
-                      <option value="4">4 Guests</option>
-                      <option value="5">5 Guests</option>
-                      <option value="6">6 Guests</option>
-                      <option value="More than 6">More than 6 Guests (Group)</option>
+                      <option value="4">4 Guests (Family)</option>
+                      <option value="5+">5+ Guests (Family / Group)</option>
                     </select>
+                    <Users className="w-4 h-4 text-[#8B6E4E] absolute left-4 top-3.5" />
                   </div>
                 </div>
 
+                {/* Room Preference */}
                 <div>
-                  <label htmlFor="roomType" className="block text-[10px] font-bold uppercase tracking-wider text-[#8B6E4E] mb-1.5">
-                    Room Type (AC / Non-AC) <span className="text-red-500">*</span>
+                  <label className="text-xs font-bold uppercase tracking-wider text-[#8B6E4E] mb-2 block">
+                    Preferred Room Category
                   </label>
                   <div className="relative">
-                    <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-[#2D2A26]/40">
-                      <Bed className="w-4 h-4" />
-                    </div>
                     <select
-                      id="roomType"
                       value={roomType}
                       onChange={(e) => setRoomType(e.target.value)}
-                      className="w-full pl-10 pr-3.5 py-3 bg-[#FDFBF7] border border-[#EAE4D9] rounded-2xl text-sm text-[#2D2A26] focus:outline-none focus:ring-2 focus:ring-[#927148] focus:border-[#927148]"
+                      className="w-full px-4 py-3 pl-11 rounded-2xl border border-[#EAE4D9] bg-[#FDFBF7] text-sm text-[#2D2A26] focus:outline-none focus:ring-2 focus:ring-[#927148]"
                     >
-                      <option value="Air-Conditioned Room (AC Room)">
-                        Air-Conditioned Room (AC Room) — {dharamshalaConfig.roomPrices.AC_ROOM_PRICE}
-                      </option>
-                      <option value="Non-AC Standard Room">
-                        Non-AC Standard Room — {dharamshalaConfig.roomPrices.NON_AC_ROOM_PRICE}
-                      </option>
-                      <option value="Spacious Family Room">
-                        Spacious Family Room — {dharamshalaConfig.roomPrices.FAMILY_ROOM_PRICE}
-                      </option>
+                      {dharamshalaConfig.roomTypes.map((r) => (
+                        <option key={r.id} value={r.name}>
+                          {r.name}
+                        </option>
+                      ))}
                     </select>
+                    <BedDouble className="w-4 h-4 text-[#8B6E4E] absolute left-4 top-3.5" />
                   </div>
                 </div>
               </div>
 
               {/* Special Requirements */}
               <div>
-                <label htmlFor="specialRequirements" className="block text-[10px] font-bold uppercase tracking-wider text-[#8B6E4E] mb-1.5">
-                  Special Requirements (Optional)
+                <label className="text-xs font-bold uppercase tracking-wider text-[#8B6E4E] mb-2 block">
+                  Special Notes or Requirements (Optional)
                 </label>
                 <textarea
-                  id="specialRequirements"
                   rows={3}
+                  placeholder="e.g. Ground floor preferred for elderly devotees, approximate arrival time at Ayodhya station..."
                   value={specialRequirements}
                   onChange={(e) => setSpecialRequirements(e.target.value)}
-                  placeholder="e.g. Ground floor preference for elderly parents, approximate train arrival time..."
-                  className="w-full px-4 py-3 bg-[#FDFBF7] border border-[#EAE4D9] rounded-2xl text-sm text-[#2D2A26] focus:outline-none focus:ring-2 focus:ring-[#927148] focus:border-[#927148] resize-none"
+                  className="w-full px-4 py-3 rounded-2xl border border-[#EAE4D9] bg-[#FDFBF7] text-sm text-[#2D2A26] focus:outline-none focus:ring-2 focus:ring-[#927148]"
                 />
               </div>
 
-              {/* Submit Button */}
-              <div className="pt-2">
+              {/* Submit CTA */}
+              <div className="pt-3">
                 <button
-                  id="send-booking-enquiry-btn"
                   type="submit"
-                  className="w-full py-4 px-6 rounded-full bg-[#8B6E4E] hover:bg-[#7D5F3B] active:bg-[#6D5333] text-white font-bold text-sm sm:text-base shadow-xs transition-all flex items-center justify-center gap-2.5 cursor-pointer"
+                  className="w-full py-4 px-6 rounded-full bg-[#927148] hover:bg-[#7D5F3B] text-white font-bold text-sm sm:text-base transition-colors shadow-xs flex items-center justify-center gap-2 cursor-pointer"
                 >
-                  <Send className="w-4 h-4 text-[#FDFBF7]" />
-                  <span>Send Booking Enquiry (via WhatsApp)</span>
+                  <Send className="w-4 h-4" />
+                  <span>Send Enquiry via WhatsApp to Birla Dharamshala</span>
                 </button>
-                <p className="text-center text-xs text-[#2D2A26]/60 mt-2.5">
-                  Direct message opens in WhatsApp to +91 8788041018. Instant acknowledgement from trust desk.
-                </p>
               </div>
 
+              <div className="text-center">
+                <p className="text-xs text-[#2D2A26]/60">
+                  Prefer direct phone conversation? Call our help desk now at{' '}
+                  <a href={`tel:${dharamshalaConfig.phoneTel}`} className="text-[#927148] font-bold hover:underline">
+                    {dharamshalaConfig.phoneDisplay}
+                  </a>
+                </p>
+              </div>
             </form>
           )}
 
         </div>
-
       </div>
     </section>
   );

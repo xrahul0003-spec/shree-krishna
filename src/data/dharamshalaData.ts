@@ -1,401 +1,391 @@
 import { DharamshalaConfig } from '../types';
 
-/**
- * CENTRAL CONFIGURATION & EDITABLE DATA
- * =====================================
- * All business details, room rates, deposit details, room specifications,
- * property facilities, nearby places, and gallery assets are maintained here
- * for instant and transparent updates.
- */
-
-export const AC_ROOM_PRICE = "₹1800 2-3 guests / Night";
-export const NON_AC_ROOM_PRICE = "₹1000 2-3 guest / Night";
-export const FAMILY_ROOM_PRICE = "₹2550 4-6 guests / Night";
-
-export const AC_ROOM_DEPOSIT = "";
-export const NON_AC_ROOM_DEPOSIT = "";
-export const FAMILY_ROOM_DEPOSIT = "";
-
-export const FAMILY_ROOM_OCCUPANCY = "Suitable for 4–6 guests";
+export const TARIFF_NOTE = "Contact us for current room tariff and availability.";
 
 export const dharamshalaConfig: DharamshalaConfig = {
-  businessName: "Shree Krishana Dharamshala Trust",
-  tagline: "Comfortable Dharamshala Stay Near Varanasi Cantt Railway Station",
-  businessType: "Dharamshala in Varanasi, Uttar Pradesh",
+  businessName: "Birla Dharamshala",
+  businessNameHindi: "बिड़ला धर्मशाला अयोध्या",
+  tagline: "Comfortable, Clean & Budget-Friendly Stay Near Ram Mandir, Ayodhya",
+  businessType: "Dharamshala / Accommodation in Ayodhya",
   
-  addressHindi: "कैंट रेलवे स्टेशन के सामने, इंग्लिशिया लाइन, Vijay Nagar Colony, Varanasi Cantonment, Varanasi, Uttar Pradesh 221002, India",
-  addressEnglish: "Opposite Cantt Railway Station, Englishia Line, Vijay Nagar Colony, Varanasi Cantonment, Varanasi, Uttar Pradesh 221002, India",
-  landmark: "Directly opposite Varanasi Cantt Railway Station (Junction)",
+  addressHindi: "24/2 10, अयोध्या जंक्शन रोड, न्यू कॉलोनी, साईं नगर, अयोध्या, उत्तर प्रदेश 224123",
+  addressEnglish: "24/2 10, Ayodhya Jct Road, New Colony, Sai Nagar, Ayodhya, Uttar Pradesh 224123",
+  landmark: "Near Ayodhya Junction & Ram Mandir / Sai Nagar",
   
   phone: "8788041018",
-  phoneDisplay: "+91 8788041018",
+  phoneTel: "+918788041018",
+  phoneDisplay: "8788041018",
   whatsapp: "918788041018",
-  email: "akashomkar0001@gmail.com",
+  website: "https://birladharamshalaayodhya.com/",
   
-  // Editable map URL and embed query
-  mapUrl: "https://www.google.com/maps/search/?api=1&query=Varanasi+Cantt+Railway+Station+Englishia+Line+Vijay+Nagar+Colony+Varanasi",
-  googleMapEmbedQuery: "Varanasi Cantt Railway Station, Englishia Line, Varanasi",
-  
-  checkInTime: "12:00 PM (Flexible upon availability)",
-  checkOutTime: "11:00 AM",
+  mapUrl: "https://www.google.com/maps/search/?api=1&query=24%2F2+10+Ayodhya+Jct+Road+New+Colony+Sai+Nagar+Ayodhya+Uttar+Pradesh+224123",
+  googleMapEmbedQuery: "24/2 10, Ayodhya Jct Road, New Colony, Sai Nagar, Ayodhya, Uttar Pradesh 224123",
   
   noticeNotes: [
-    "Valid government photo ID (Aadhaar / Voter ID / Passport) required for all adult guests during check-in.",
-    "Strictly pure vegetarian and peaceful family environment.",
-    "This website provides direct enquiry. Room availability is confirmed by telephone or WhatsApp."
+    "Valid government photo ID is required for all guests during check-in.",
+    "Strictly pure vegetarian (satvik), alcohol-free, and serene spiritual environment.",
+    "For room availability, current tariffs, and group bookings, please contact us directly via Call (8788041018) or WhatsApp."
   ],
-
-  roomPrices: {
-    AC_ROOM_PRICE,
-    NON_AC_ROOM_PRICE,
-    FAMILY_ROOM_PRICE,
-    AC_ROOM_DEPOSIT,
-    NON_AC_ROOM_DEPOSIT,
-    FAMILY_ROOM_DEPOSIT,
-  },
-
-  familyRoomOccupancy: FAMILY_ROOM_OCCUPANCY,
 
   roomTypes: [
     {
       id: "ac-room",
       name: "Air-Conditioned Room (AC Room)",
       category: "ac",
-      price: AC_ROOM_PRICE,
-      deposit: AC_ROOM_DEPOSIT,
-      occupancy: "2–3 Guests",
-      bedConfig: "1 Double Bed (Extra mattress available upon request)",
+      categoryLabel: "AC Rooms",
+      tariffNote: TARIFF_NOTE,
       isAc: true,
-      bathroomInfo: "Attached Clean Bathroom with Running Water & Geyser",
-      shortDescription: "Cool and comfortable stay equipped with air conditioning, fresh clean linens, and a tranquil atmosphere for pilgrims.",
-      fullDescription: "Our AC rooms offer a cool, peaceful sanctuary after a long day of darshan at Kashi Vishwanath or exploring the ghats. Designed specifically for budget-conscious families and travellers seeking genuine cleanliness, ventilation, and comfort.",
-      featuredImage: "https://images.unsplash.com/photo-1590490360182-c33d57733427?q=80&w=1200&auto=format&fit=crop",
+      shortDescription: "Clean, air-conditioned accommodation providing a peaceful retreat after visiting Shri Ram Janmabhoomi Mandir.",
+      fullDescription: "Experience optimal comfort in our Air-Conditioned rooms. Thoughtfully furnished with pristine bedding, energy-efficient cooling, attached private bathroom with 24×7 water, LED TV, and daily housekeeping. Designed specifically for pilgrims, devotees, and travelers seeking rest after temple darshan.",
+      featuredImage: "https://images.unsplash.com/photo-1618773928121-c32242e63f39?q=80&w=1200&auto=format&fit=crop",
       galleryImages: [
-        "https://images.unsplash.com/photo-1590490360182-c33d57733427?q=80&w=1200&auto=format&fit=crop",
         "https://images.unsplash.com/photo-1618773928121-c32242e63f39?q=80&w=1200&auto=format&fit=crop",
-        "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?q=80&w=1200&auto=format&fit=crop"
+        "https://images.unsplash.com/photo-1590490360182-c33d57733427?q=80&w=1200&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1566665797739-1674de7a421a?q=80&w=1200&auto=format&fit=crop"
       ],
-      facilities: [
-        "Air Conditioning",
-        "Ceiling Fan",
-        "Clean & Hygienic Bedding",
-        "Attached Clean Bathroom",
-        "Filtered Drinking Water",
-        "Basic Room Furniture & Table",
-        "Family-Friendly Atmosphere",
-        "Power Backup Support"
-      ],
-      rules: [
-        "Standard check-in: 12:00 PM | Check-out: 11:00 AM",
-        "Government ID mandatory for all guests at check-in",
-        "Strictly non-smoking and pure vegetarian premises",
-        "Quiet hours from 10:30 PM to 6:00 AM for peaceful rest"
-      ]
+      features: ["Air Conditioning", "Clean Bedding & Linens", "Attached Clean Bathroom", "24×7 Water Supply", "LED TV", "High Security"],
+      bedType: "Double Bed / Twin Beds",
+      occupancy: "2-3 Guests"
     },
     {
       id: "non-ac-room",
-      name: "Non-AC Standard Room",
+      name: "Affordable Non-AC Room",
       category: "non-ac",
-      price: NON_AC_ROOM_PRICE,
-      deposit: NON_AC_ROOM_DEPOSIT,
-      occupancy: "2–3 Guests",
-      bedConfig: "1 Double Bed / Twin Beds",
+      categoryLabel: "Non-AC Rooms",
+      tariffNote: TARIFF_NOTE,
       isAc: false,
-      bathroomInfo: "Attached Clean Bathroom with Regular Water Supply",
-      shortDescription: "Affordable, naturally airy and meticulously cleaned room tailored for budget pilgrims and railway travellers.",
-      fullDescription: "Ideal for pilgrims and transit travellers arriving at Varanasi Cantt Railway Station looking for a neat, secure, and modest stay without unnecessary luxury surcharges. Well-ventilated with ceiling fans and fresh cotton bedding.",
-      featuredImage: "https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf?q=80&w=1200&auto=format&fit=crop",
+      shortDescription: "Economical, airy, and hygienically maintained Non-AC room ideal for budget-conscious pilgrims and solo devotees.",
+      fullDescription: "Our Affordable Non-AC rooms offer a neat, comfortable, and budget-friendly stay in the holy city of Ayodhya. Equipped with high-speed ceiling fans, fresh sanitized linens, attached washroom with running water, and ample natural ventilation to keep you refreshed throughout your pilgrimage.",
+      featuredImage: "/images/NON AC.webp",
       galleryImages: [
-        "https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf?q=80&w=1200&auto=format&fit=crop",
-        "https://images.unsplash.com/photo-1566665797739-1674de7a421a?q=80&w=1200&auto=format&fit=crop",
-        "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?q=80&w=1200&auto=format&fit=crop"
+        "/images/NON AC.webp",
+        "https://images.unsplash.com/photo-1618773928121-c32242e63f39?q=80&w=1200&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1590490360182-c33d57733427?q=80&w=1200&auto=format&fit=crop"
       ],
-      facilities: [
-        "High-Speed Ceiling Fan",
-        "Comfortable Bed & Clean Linens",
-        "Attached Clean Bathroom",
-        "Filtered Drinking Water",
-        "Basic Furniture & Wardrobe",
-        "Naturally Ventilated Windows",
-        "Family-Friendly Environment",
-        "Opposite Cantt Railway Station"
-      ],
-      rules: [
-        "Standard check-in: 12:00 PM | Check-out: 11:00 AM",
-        "Government ID mandatory for all occupants",
-        "Strictly non-smoking and vegetarian premises",
-        "Early morning checkout assistance available"
-      ]
+      features: ["High-speed Ceiling Fan", "Hygienic Clean Linens", "Attached Bathroom", "24×7 Running Water", "Spacious Ventilation", "Power Backup"],
+      bedType: "Twin / Double Beds",
+      occupancy: "2 Guests"
     },
     {
       id: "family-room",
       name: "Spacious Family Room",
       category: "family",
-      price: FAMILY_ROOM_PRICE,
-      deposit: FAMILY_ROOM_DEPOSIT,
-      occupancy: FAMILY_ROOM_OCCUPANCY,
-      bedConfig: "Multiple Beds (Double Bed + Single Beds / Bunk arrangements)",
+      categoryLabel: "Family Rooms",
+      tariffNote: TARIFF_NOTE,
       isAc: true,
-      bathroomInfo: "Attached Spacious Clean Bathroom with Geyser",
-      shortDescription: "Generous room size accommodating family groups and pilgrimage parties comfortably under one roof.",
-      fullDescription: "Travelling to Kashi with elders, children, or a family group? Our Family Rooms offer ample square footage, multiple comfortable beds, and dedicated space for luggage so everyone stays together comfortably opposite the station.",
-      featuredImage: "https://images.unsplash.com/photo-1566665797739-1674de7a421a?q=80&w=1200&auto=format&fit=crop",
+      shortDescription: "Generously sized multi-bed accommodation tailored for family groups, elderly pilgrims, and devotee families.",
+      fullDescription: "Specially designed for visiting families and pilgrimage groups staying together in Ayodhya. Offers multiple comfortable beds, ample luggage space, climate control, clean attached bathroom, LED TV, and complete safety in a warm, spiritual atmosphere close to Ram Mandir.",
+      featuredImage: "/images/family-room.webp",
       galleryImages: [
+        "/images/family-room.webp",
         "https://images.unsplash.com/photo-1566665797739-1674de7a421a?q=80&w=1200&auto=format&fit=crop",
-        "https://images.unsplash.com/photo-1590490360182-c33d57733427?q=80&w=1200&auto=format&fit=crop",
         "https://images.unsplash.com/photo-1618773928121-c32242e63f39?q=80&w=1200&auto=format&fit=crop"
       ],
-      facilities: [
-        "Air Conditioning & Multiple Ceiling Fans",
-        "Multiple Beds for Family Groups",
-        "Spacious Layout with Luggage Area",
-        "Attached Clean Bathroom with Hot Water",
-        "Filtered RO Drinking Water",
-        "Clean Bedding & Fresh Pillows",
-        "Power Backup Support",
-        "Ground & Accessible Floor Options"
-      ],
-      rules: [
-        "Standard check-in: 12:00 PM | Check-out: 11:00 AM",
-        "Valid government IDs for all adult family members",
-        "Respectful and peaceful atmosphere for all staying families",
-        "Prior intimation advised for late night arrivals from train"
-      ]
+      features: ["Multiple Beds", "AC & Ceiling Fans", "Spacious Luggage Area", "Large Clean Bathroom", "LED TV", "Family Friendly & Secure"],
+      bedType: "Triple / Quad Family Beds",
+      occupancy: "4-6 Family Members"
     }
   ],
 
   propertyFacilities: [
     {
-      id: "f-ac",
-      name: "AC & Non-AC Rooms",
-      description: "Options tailored to your preference, season, and budget.",
-      iconName: "Wind",
-      enabled: true
-    },
-    {
-      id: "f-family",
-      name: "Family Rooms",
-      description: "Spacious multi-bed rooms designed specifically for families.",
-      iconName: "Users",
-      enabled: true
-    },
-    {
-      id: "f-cleanliness",
-      name: "Clean & Tidy Rooms",
-      description: "Fresh washed bed linens, tidy floors, and regular housekeeping.",
+      id: "f-near-ram-mandir",
+      name: "Comfortable Rooms Near Ram Mandir",
+      description: "Conveniently located within easy reach of Shri Ram Janmabhoomi Mandir, allowing peaceful morning darshan and evening aarti visits.",
       iconName: "Sparkles",
       enabled: true
     },
     {
-      id: "f-bathrooms",
-      name: "Clean Bathrooms",
-      description: "Attached, well-maintained sanitary bathrooms with regular water.",
-      iconName: "Bath",
-      enabled: true
-    },
-    {
-      id: "f-hotwater",
-      name: "Hot Water Facility",
-      description: "Geyser hot water provision for refreshing baths after travel.",
-      iconName: "Flame",
-      enabled: true
-    },
-    {
-      id: "f-drinkingwater",
-      name: "Filtered Drinking Water",
-      description: "Clean, hygienic RO drinking water available for all guests.",
-      iconName: "Droplets",
-      enabled: true
-    },
-    {
-      id: "f-reception",
-      name: "Reception / Help Desk",
-      description: "Dedicated front desk to welcome travellers and assist with queries.",
-      iconName: "ConciergeBell",
-      enabled: true
-    },
-    {
-      id: "f-cctv",
-      name: "CCTV Security",
-      description: "Round-the-clock corridor and entrance monitoring for peace of mind.",
+      id: "f-clean-hygienic",
+      name: "Clean & Hygienic Dharamshala",
+      description: "Rigorous daily sanitization, freshly laundered bedsheets, spotless washrooms, and meticulously maintained corridors for total peace of mind.",
       iconName: "ShieldCheck",
       enabled: true
     },
     {
-      id: "f-power",
-      name: "Power Backup",
-      description: "Inverter / generator backup for essential lights and fans.",
-      iconName: "Zap",
+      id: "f-free-parking",
+      name: "Free Parking",
+      description: "Spacious and secure vehicular parking area on premises for pilgrims arriving by private cars, vans, or chartered devotee buses.",
+      iconName: "Car",
       enabled: true
     },
     {
-      id: "f-familyfriendly",
-      name: "Family Friendly Environment",
-      description: "Safe, respectful, and sober atmosphere ideal for pilgrims.",
-      iconName: "HeartHandshake",
+      id: "f-ac-rooms",
+      name: "Air-Conditioned Rooms",
+      description: "Well-insulated AC rooms equipped with modern cooling to provide absolute comfort after spiritual walks and temple queues.",
+      iconName: "Wind",
       enabled: true
     },
     {
-      id: "f-assistance",
-      name: "24/7 Assistance",
-      description: "Staff on duty to assist guests arriving by late trains.",
-      iconName: "Clock",
+      id: "f-non-ac-rooms",
+      name: "Affordable Non-AC Rooms",
+      description: "Well-ventilated, budget-friendly accommodation ensuring every devotee can stay affordably without compromising on cleanliness.",
+      iconName: "Coins",
       enabled: true
     },
     {
-      id: "f-luggage",
-      name: "Luggage Assistance",
-      description: "Convenient luggage holding and assistance for travellers.",
-      iconName: "Briefcase",
+      id: "f-cctv-security",
+      name: "24×7 CCTV Security",
+      description: "Round-the-clock surveillance across entrances, hallways, and common areas to ensure complete safety for families and solo travelers.",
+      iconName: "Lock",
       enabled: true
+    },
+    {
+      id: "f-led-tv",
+      name: "LED TV in All Rooms",
+      description: "In-room entertainment and devotional broadcasts to keep you connected and relaxed during your spiritual stay.",
+      iconName: "Tv",
+      enabled: true
+    },
+    {
+      id: "f-satvik-food",
+      name: "Pure Vegetarian Satvik Food",
+      description: "Easy availability of wholesome, pure vegetarian satvik meals prepared with utmost sanctity following holy Ayodhya traditions.",
+      iconName: "Utensils",
+      enabled: true
+    },
+    {
+      id: "f-prime-location",
+      name: "Prime Location",
+      description: "Situated on Ayodhya Junction Road in Sai Nagar, providing seamless connectivity to railway stations, airport, and main shrines.",
+      iconName: "MapPin",
+      enabled: true
+    }
+  ],
+
+  whyChoosePoints: [
+    {
+      id: "wc-1",
+      number: "01",
+      title: "Prime Location in Ayodhya",
+      desc: "Centrally positioned on Ayodhya Jct Road, Sai Nagar.",
+      detail: "Unbeatable accessibility near Ayodhya Junction Railway Station with quick access to Shri Ram Janmabhoomi Mandir, Hanuman Garhi, and Saryu Ghat.",
+      iconName: "MapPin"
+    },
+    {
+      id: "wc-2",
+      number: "02",
+      title: "Clean & Hygienic Accommodation",
+      desc: "Spotless rooms with sanitized bedding and clean bathrooms.",
+      detail: "We place the highest priority on hygiene, ensuring clean linens, disinfected premises, and fresh environments for all arriving guests.",
+      iconName: "Sparkles"
+    },
+    {
+      id: "wc-3",
+      number: "03",
+      title: "Affordable & Budget-Friendly Stay",
+      desc: "Fair, transparent, and pocket-friendly tariff options.",
+      detail: "True dharamshala ethos offering budget-conscious AC and Non-AC room choices with zero hidden commissions or middlemen markups.",
+      iconName: "Coins"
+    },
+    {
+      id: "wc-4",
+      number: "04",
+      title: "Peaceful & Spiritual Environment",
+      desc: "Sober, devotional atmosphere ideal for pilgrims.",
+      detail: "Quiet premises shielded from heavy traffic noise, honoring the spiritual sanctity of Ayodhya Dham with pure satvik culture.",
+      iconName: "Heart"
+    },
+    {
+      id: "wc-5",
+      number: "05",
+      title: "Perfect for Families & Pilgrims",
+      desc: "Accommodates large families, elders, and devotee groups.",
+      detail: "Spacious rooms and dedicated multi-bed configurations designed for elderly parents, children, and collective pilgrimage groups.",
+      iconName: "Users"
+    },
+    {
+      id: "wc-6",
+      number: "06",
+      title: "Comfortable Rooms with Basic Amenities",
+      desc: "24×7 water, power backup, LED TV & clean washrooms.",
+      detail: "All essential comforts including running water, climate control, comfortable mattresses, and continuous staff assistance.",
+      iconName: "BedDouble"
+    },
+    {
+      id: "wc-7",
+      number: "07",
+      title: "Safe & Secure Premises",
+      desc: "24×7 CCTV surveillance and vigilant on-site staff.",
+      detail: "Monitored premises with strict guest verification so female travelers, families, and solo devotees can rest with complete safety.",
+      iconName: "ShieldCheck"
+    },
+    {
+      id: "wc-8",
+      number: "08",
+      title: "Easy Enquiry & Direct Contact",
+      desc: "Direct phone line at 8788041018 and instant WhatsApp assistance.",
+      detail: "Speak directly with our local Ayodhya help desk at 8788041018 without booking portals, extra service fees, or delays.",
+      iconName: "PhoneCall"
+    },
+    {
+      id: "wc-9",
+      number: "09",
+      title: "Trusted Hospitality",
+      desc: "Courteous staff dedicated to making your pilgrimage memorable.",
+      detail: "Warm, respectful, and attentive service helping you with temple timings, darshan routes, local transport, and comfortable rest.",
+      iconName: "Award"
+    }
+  ],
+
+  guestReviews: [
+    {
+      id: "rev-1",
+      name: "Amit Sharma",
+      role: "Business Traveller",
+      rating: 5,
+      date: "Recent Stay",
+      comment: "Birla Dharamshala in Ayodhya is located in a prime spot on Ayodhya Junction Road. The rooms were exceptionally clean, the AC worked flawlessly, and having secure parking made my business trip hassle-free. Direct booking on 8788041018 was prompt and smooth."
+    },
+    {
+      id: "rev-2",
+      name: "Priya Singh",
+      role: "Pilgrim Tourist",
+      rating: 5,
+      date: "Recent Stay",
+      comment: "Visiting Ram Mandir was a lifelong dream for our family. Staying at Birla Dharamshala made the pilgrimage peaceful and convenient. It is very close to Ram Mandir and Hanuman Garhi. The environment is safe, pure vegetarian, and deeply spiritual."
+    },
+    {
+      id: "rev-3",
+      name: "Rahul Verma",
+      role: "Family Trip",
+      rating: 5,
+      date: "Recent Stay",
+      comment: "We booked the spacious family room for our parents and kids. Clean beds, continuous water supply, and polite staff who guided us on morning darshan timings. Extremely budget-friendly and trustworthy dharamshala in Ayodhya."
+    },
+    {
+      id: "rev-4",
+      name: "Sneha Kapoor",
+      role: "Solo Traveller",
+      rating: 5,
+      date: "Recent Stay",
+      comment: "As a solo female traveler visiting Ayodhya's historic temples, safety was my highest priority. Birla Dharamshala provided 24×7 CCTV security, clean rooms, and immediate assistance. Convenient access to both Ayodhya railway station and Saryu Ghat."
     }
   ],
 
   galleryImages: [
     {
-      id: "user-photo-facade",
-      title: "Main Entrance & Dharamshala Facade",
-      titleHindi: "मुख्य प्रवेश द्वार एवं धर्मशाला भवन (इंग्लिशिया लाइन)",
-      category: "Property",
-      imageUrl: "/images/copy.jpg",
-      fallbackUrl: "https://images.unsplash.com/photo-1548013146-72479768bada?q=80&w=1200&auto=format&fit=crop",
-      description: "Historic main entrance archway and official bilingual trust signage of Shree Krishna Dharamshala Trust opposite Varanasi Cantt Railway Station.",
-      badge: "Main Entrance"
+      id: "gal-mandir",
+      title: "Shri Ram Janmabhoomi Mandir",
+      titleHindi: "श्री राम जन्मभूमि मंदिर",
+      category: "Temples",
+      imageUrl: "/images/RAM MANDIR.webp",
+      description: "Magnificent Shri Ram Janmabhoomi Mandir located close to Birla Dharamshala.",
+      badge: "Ram Mandir"
     },
     {
-      id: "user-photo-plaque",
-      title: "Trust Foundation Plaque (Est. 12 June 1933)",
-      titleHindi: "श्री कृष्ण धर्मशाला ट्रस्ट स्थापना शिलापट्ट (12 जून 1933)",
-      category: "Property",
-      imageUrl: "/gallery/unnamed (3).jpg",
-      fallbackUrl: "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?q=80&w=1200&auto=format&fit=crop",
-      description: "Historic inscription plaque documenting the foundation of the trust on 12 June 1933 for pilgrim service, with 24/7 CCTV surveillance notice.",
-      badge: "Est. 1933"
-    },
-    {
-      id: "user-photo-temple-day",
-      title: "In-House Temple & Courtyard Pavilion",
-      titleHindi: "प्रांगण स्थित श्री कृष्ण मंदिर मंडप",
-      category: "Property",
-      imageUrl: "/gallery/unnamed (4).jpg",
-      fallbackUrl: "https://images.unsplash.com/photo-1627894483216-2138af692e32?q=80&w=1200&auto=format&fit=crop",
-      description: "Red sandstone temple pavilion situated inside the tranquil trust courtyard with sacred yellow flag and peaceful atmosphere.",
-      badge: "Trust Mandir"
-    },
-    {
-      id: "user-photo-radha-krishna",
-      title: "Shri Radha Krishna Deities Darshan",
-      titleHindi: "श्री राधा कृष्ण युगल सरकार दिव्य दर्शन",
-      category: "Common Areas",
-      imageUrl: "/gallery/unnamed.jpg",
-      fallbackUrl: "https://images.unsplash.com/photo-1583089892943-e02e5b017b6a?q=80&w=1200&auto=format&fit=crop",
-      description: "Sacred sanctum darshan of Shri Radha Krishna vigraha adorned in traditional silk attire, peacock feather mukut, and fresh flower garlands.",
-      badge: "Divine Darshan"
-    },
-    {
-      id: "user-photo-sanctum-prayer",
-      title: "Temple Sanctum & Devotees in Prayer",
-      titleHindi: "मंदिर गर्भगृह एवं श्रद्धालु सत्संग दर्शन",
-      category: "Common Areas",
-      imageUrl: "/gallery/unnamed (1).webp",
-      fallbackUrl: "https://images.unsplash.com/photo-1514222134-b57cbb8ce073?q=80&w=1200&auto=format&fit=crop",
-      description: "Serene sanctum interior where visiting pilgrims and families gather for daily prayers, morning chanting, and quiet contemplation.",
-      badge: "Prayer Hall"
-    },
-    {
-      id: "user-photo-evening-aarti",
-      title: "Evening Mandir with Festive Illumination",
-      titleHindi: "संध्या आरती एवं उत्सव आलोकित मंदिर प्रांगण",
-      category: "Property",
-      imageUrl: "/images/aarti.jpg",
-      fallbackUrl: "https://images.unsplash.com/photo-1519817650390-64a93db51149?q=80&w=1200&auto=format&fit=crop",
-      description: "Courtyard temple bathed in festive green and golden lighting under lush trees during evening bhajan and aarti hours.",
-      badge: "Evening Aarti"
-    },
-    {
-      id: "user-photo-night-lights",
-      title: "Grand Night Illumination & Fairy Lights",
-      titleHindi: "भव्य रात्रि दर्शन एवं दीप-प्रकाश सज्जा",
-      category: "Property",
-      imageUrl: "/gallery/unnamed.webp",
-      fallbackUrl: "https://images.unsplash.com/photo-1567157577867-05ccb1388e66?q=80&w=1200&auto=format&fit=crop",
-      description: "Spectacular night view of the illuminated temple pavilion and courtyard adorned with cascades of golden fairy string lights.",
-      badge: "Night View"
-    },
-    {
-      id: "user-photo-room-interior",
-      title: "Clean Guest Bedroom with Twin Beds",
-      titleHindi: "स्वच्छ एवं आरामदायक कमरा (ट्विन बेड्स)",
+      id: "gal-ac-room",
+      title: "Air-Conditioned Guest Room",
+      titleHindi: "वातानुकूलित कक्ष",
       category: "Rooms",
-      imageUrl: "/gallery/unnamed (2).webp",
-      fallbackUrl: "https://images.unsplash.com/photo-1590490360182-c33d57733427?q=80&w=1200&auto=format&fit=crop",
-      description: "Real guest bedroom inside Shree Krishna Dharamshala with tidy beds, clean white linens, warm blankets, and peaceful ambiance for pilgrims.",
-      badge: "Guest Room"
+      imageUrl: "https://images.unsplash.com/photo-1618773928121-c32242e63f39?q=80&w=1200&auto=format&fit=crop",
+      description: "Spotless AC accommodation with comfortable bedding and modern amenities.",
+      badge: "AC Room"
     },
     {
-      id: "user-photo-ghat-dusk",
-      title: "Varanasi Ganga Ghats at Dusk",
-      titleHindi: "संध्या वेला में पावन गंगा घाट दर्शन",
-      category: "Location",
-      imageUrl: "/images/images.jpg",
-      fallbackUrl: "https://images.unsplash.com/photo-1561361513-2d000a50f0dc?q=80&w=1200&auto=format&fit=crop",
-      description: "Pilgrims gathered on the sacred ghat steps of Varanasi during sunset hours, illuminated by tall decorative heritage lamps.",
-      badge: "Ganga Ghats"
+      id: "gal-non-ac-room",
+      title: "Affordable Non-AC Room",
+      titleHindi: "नॉन-एसी आरामदायक कमरा",
+      category: "Rooms",
+      imageUrl: "/images/NON AC.webp",
+      description: "Clean and airy budget room suited for devotees and pilgrims.",
+      badge: "Non-AC"
     },
     {
-      id: "user-photo-kashi-ghats",
-      title: "Historic Kashi Riverfront Ghats & Temples",
-      titleHindi: "काशी के प्राचीन घाट, मंदिर एवं नौकाएँ",
+      id: "gal-family-room",
+      title: "Spacious Family Accommodation",
+      titleHindi: "पारिवारिक कक्ष",
+      category: "Rooms",
+      imageUrl: "/images/family-room.webp",
+      description: "Multi-bed family room providing restful stay for family pilgrimage groups.",
+      badge: "Family Room"
+    },
+    {
+      id: "gal-hanuman-garhi",
+      title: "Hanuman Garhi Temple",
+      titleHindi: "हनुमान गढ़ी अयोध्या",
+      category: "Temples",
+      imageUrl: "/images/HANUMAN.jpg",
+      description: "Historic fortress temple of Lord Hanuman in the heart of Ayodhya.",
+      badge: "Hanuman Garhi"
+    },
+    {
+      id: "gal-saryu-ghat",
+      title: "Holy Saryu River Ghat",
+      titleHindi: "सरयू नदी घाट",
       category: "Location",
-      imageUrl: "/gallery/unnamed (3).webp",
-      fallbackUrl: "https://images.unsplash.com/photo-1571536802807-30451e3955d8?q=80&w=1200&auto=format&fit=crop",
-      description: "Majestic panoramic view of Kashi's ancient stone ghats, temple spires, and wooden pilgrimage boats gently moored along the holy river.",
-      badge: "Kashi Darshan"
+      imageUrl: "https://images.unsplash.com/photo-1561361058-c24cecae35ca?q=80&w=1200&auto=format&fit=crop",
+      description: "Peaceful holy ghats along sacred Saryu river known for evening Aarti and holy dips.",
+      badge: "Saryu Ghat"
+    },
+    {
+      id: "gal-kanak-bhawan",
+      title: "Kanak Bhawan",
+      titleHindi: "कनक भवन",
+      category: "Temples",
+      imageUrl: "/images/kanak-bhawan.webp",
+      description: "Golden palace temple dedicated to Lord Ram and Mata Sita in Ramkot.",
+      badge: "Kanak Bhawan"
+    },
+    {
+      id: "gal-property",
+      title: "Birla Dharamshala Premises",
+      titleHindi: "परिसर एवं वातावरण",
+      category: "Property",
+      imageUrl: "/images/dharamshala.webp",
+      description: "Serene, secure, and clean premises of Birla Dharamshala on Ayodhya Jct Road.",
+      badge: "Property"
     }
   ],
 
   nearbyPlaces: [
     {
-      id: "np-railway",
-      name: "Varanasi Cantt Railway Station (Varanasi Jn)",
-      distance: "Directly opposite the property (approx. 50–100 meters walk)",
-      approxTravelTime: "1–2 minutes walking",
-      note: "Step out of the station and cross to Englishia Line. Maximum travel convenience."
+      id: "np-ram-mandir",
+      name: "Ram Mandir Ayodhya",
+      label: "Ram Janmabhoomi",
+      distance: "Approx. 1.8 km",
+      description: "The grand and sacred Shri Ram Janmabhoomi Mandir, the spiritual focal point of Ayodhya where millions of devotees seek divine blessings.",
+      imageUrl: "/images/RAM MANDIR.webp"
     },
     {
-      id: "np-kashi",
-      name: "Shri Kashi Vishwanath Temple & Corridor",
-      distance: "[Editable: Approx. 4.5 km - verify before travel]",
-      approxTravelTime: "[Editable: ~20-25 mins via auto/taxi]",
-      note: "Easily accessible by local e-rickshaw or taxi directly from Cantt Station area."
+      id: "np-hanuman-garhi",
+      name: "Hanuman Garhi",
+      label: "Ayodhya",
+      distance: "Approx. 1.5 km",
+      description: "10th-century temple fortress dedicated to Lord Hanuman. Pilgrims customarily visit Hanuman Garhi before visiting Ram Mandir.",
+      imageUrl: "/images/HANUMAN.jpg"
     },
     {
-      id: "np-ghats",
-      name: "Dashashwamedh Ghat (Ganga Aarti)",
-      distance: "[Editable: Approx. 5 km - verify before travel]",
-      approxTravelTime: "[Editable: ~25 mins via auto/e-rickshaw]",
-      note: "Famous for evening Ganga Aarti ceremonies and morning boat rides."
+      id: "np-kanak-bhawan",
+      name: "Kanak Bhawan",
+      label: "Ramkot",
+      distance: "Approx. 2.0 km",
+      description: "Ornate palace temple known as 'House of Gold', traditionally gifted to Mata Sita by Queen Kaikeyi, featuring divine deities of Ram and Sita.",
+      imageUrl: "/images/kanak-bhawan.webp"
     },
     {
-      id: "np-sankat",
-      name: "Sankat Mochan Hanuman Temple",
-      distance: "[Editable: Approx. 6.5 km - verify before travel]",
-      approxTravelTime: "[Editable: ~25-30 mins by road]",
-      note: "Revered spiritual destination for devotees in South Varanasi."
+      id: "np-saryu-ghat",
+      name: "Saryu River Ghat",
+      label: "Ayodhya",
+      distance: "Approx. 2.5 km",
+      description: "Sacred bathing ghats along the holy Saryu River, famous for evening Maha Aarti, devotional boat rides, and spiritually purifying baths.",
+      imageUrl: "https://images.unsplash.com/photo-1561361058-c24cecae35ca?q=80&w=800&auto=format&fit=crop"
     },
     {
-      id: "np-sarnath",
-      name: "Sarnath Buddhist Heritage Site",
-      distance: "[Editable: Approx. 11 km - verify before travel]",
-      approxTravelTime: "[Editable: ~35-40 mins by vehicle]",
-      note: "Historic Dhamek Stupa and Deer Park pilgrimage site."
+      id: "np-dashrath-mahal",
+      name: "Dashrath Mahal",
+      label: "Ayodhya",
+      distance: "Approx. 1.9 km",
+      description: "Revered royal palace shrine commemorating King Dasharatha's residence where Lord Rama spent his divine childhood.",
+      imageUrl: "/images/Ayodhya_Dashrath_Mahal,_Ayodhya_Inside_View.jpg"
     },
     {
-      id: "np-airport",
-      name: "Lal Bahadur Shastri International Airport (Babatpur)",
-      distance: "[Editable: Approx. 22 km - verify before travel]",
-      approxTravelTime: "[Editable: ~45 mins via NH31]",
-      note: "Direct cab and bus connectivity available from the Cantt Station terminal."
+      id: "np-guptar-ghat",
+      name: "Guptar Ghat",
+      label: "Faizabad Road",
+      distance: "Approx. 6.5 km",
+      description: "Peaceful sacred bank on the Saryu River associated with Lord Rama's Jal Samadhi, known for serene sunsets and tranquil river steps.",
+      imageUrl: "/images/guptar-ghat.jpg"
     }
   ]
 };

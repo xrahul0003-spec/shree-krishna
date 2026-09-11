@@ -1,5 +1,5 @@
 import React from 'react';
-import { Users, Bed, Bath, Wind, Check, Phone, MessageCircle, Info, CalendarCheck } from 'lucide-react';
+import { Phone, MessageCircle, Info, CalendarCheck, MapPin, Check } from 'lucide-react';
 import { RoomType } from '../types';
 import { dharamshalaConfig } from '../data/dharamshalaData';
 
@@ -14,109 +14,71 @@ export const RoomCard: React.FC<RoomCardProps> = ({
   onViewDetails,
   onBookEnquire,
 }) => {
-  const [imgSrc, setImgSrc] = React.useState(room.featuredImage);
-
   const whatsappUrl = `https://wa.me/${dharamshalaConfig.whatsapp}?text=${encodeURIComponent(
-    `Namaste, I am enquiring about room availability for ${room.name} at Shree Krishana Dharamshala Trust Varanasi. Tariff listed is ${room.price}. Please share details.`
+    `Namaste Birla Dharamshala Ayodhya, I would like to enquire about room tariff and availability for ${room.name} near Ram Mandir.`
   )}`;
 
   return (
-    <div className="bg-white rounded-3xl overflow-hidden border border-[#EAE4D9] shadow-xs hover:shadow-md transition-all flex flex-col h-full">
-      {/* Room Image with Badge */}
-      <div className="relative h-56 sm:h-60 overflow-hidden bg-stone-100 group m-2.5 rounded-2xl">
+    <div className="bg-white rounded-3xl overflow-hidden border border-[#EAE4D9] hover:border-[#927148] shadow-xs hover:shadow-md transition-all duration-300 flex flex-col justify-between group">
+      {/* Card Visual Header */}
+      <div className="relative aspect-16/10 w-full overflow-hidden bg-[#F0EBE3]">
         <img
-          src={imgSrc}
-          alt={room.name}
-          onError={() => {
-            const fallback = room.galleryImages?.[1] || 'https://images.unsplash.com/photo-1590490360182-c33d57733427?q=80&w=1200&auto=format&fit=crop';
-            if (imgSrc !== fallback) {
-              setImgSrc(fallback);
-            }
-          }}
+          src={room.featuredImage}
+          alt={`${room.name} - Birla Dharamshala Ayodhya`}
           className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
-          referrerPolicy="no-referrer"
+          loading="lazy"
         />
-        
-        {/* Bento Pill Badges */}
-        <div className="absolute top-3 left-3 flex flex-wrap gap-1.5">
-          <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-[#F0EBE3]/95 backdrop-blur-xs text-[#8B6E4E] border border-[#EAE4D9] shadow-2xs">
-            <Wind className="w-3 h-3 text-[#927148]" />
-            {room.isAc ? 'AC Room' : 'Non-AC Room'}
+
+        {/* Category Pill Tag */}
+        <div className="absolute top-3 left-3 flex flex-wrap gap-1.5 z-10">
+          <span className="bg-[#2D2A26]/90 backdrop-blur-xs text-[#FDFBF7] text-[11px] font-bold uppercase tracking-wider py-1 px-3 rounded-full border border-white/20">
+            {room.categoryLabel}
           </span>
-          {room.category === 'family' && (
-            <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full text-[10px] font-bold bg-[#D4AF37] text-stone-950 uppercase shadow-2xs">
-              <Users className="w-3 h-3" />
-              Family Suite
-            </span>
-          )}
         </div>
 
-        {/* Price Tag Overlay */}
-        <div className="absolute bottom-3 right-3 bg-[#2D2A26]/90 backdrop-blur-xs text-white px-3.5 py-1.5 rounded-full text-right shadow-sm border border-white/10">
-          <p className="text-xs sm:text-sm font-bold text-[#FDFBF7] font-serif leading-none">
-            {room.price}
-          </p>
-        </div>
+        {/* Occupancy Badge */}
+        {room.occupancy && (
+          <div className="absolute bottom-3 right-3 z-10">
+            <span className="bg-[#D4AF37] text-stone-950 text-[10px] font-bold uppercase tracking-wider py-1 px-2.5 rounded-full shadow-xs">
+              {room.occupancy}
+            </span>
+          </div>
+        )}
       </div>
 
       {/* Card Body */}
-      <div className="p-5 sm:p-6 flex-1 flex flex-col justify-between pt-2">
+      <div className="p-5 sm:p-6 flex-1 flex flex-col justify-between">
         <div>
-          {/* Room Title & Short Description */}
+          {/* Room Title */}
           <h3 className="font-serif text-xl sm:text-2xl font-bold text-[#2D2A26] mb-2">
             {room.name}
           </h3>
-          <p className="text-[#2D2A26]/70 text-xs sm:text-sm line-clamp-2 mb-4 leading-relaxed">
+
+          {/* Location note */}
+          <p className="text-xs text-[#8B6E4E] font-medium flex items-center gap-1.5 mb-3">
+            <MapPin className="w-3.5 h-3.5 text-[#927148] shrink-0" />
+            <span>Near Ram Mandir &amp; Ayodhya Junction</span>
+          </p>
+          
+          <p className="text-[#2D2A26]/75 text-xs sm:text-sm leading-relaxed mb-4">
             {room.shortDescription}
           </p>
 
-          {/* Deposit Info - ONLY show if deposit is not empty */}
-          {room.deposit && room.deposit.trim() !== '' && (
-            <div className="mb-3 px-3 py-1 rounded-full bg-[#F0EBE3] border border-[#EAE4D9] text-[#8B6E4E] text-xs font-semibold">
-              Deposit: {room.deposit}
+          {/* Key Amenities Micro Pills */}
+          {room.features && room.features.length > 0 && (
+            <div className="grid grid-cols-2 gap-1.5 mb-4">
+              {room.features.slice(0, 4).map((feat, idx) => (
+                <div key={idx} className="flex items-center gap-1 text-[11px] text-[#2D2A26]/75">
+                  <Check className="w-3 h-3 text-[#25D366] shrink-0" />
+                  <span className="truncate">{feat}</span>
+                </div>
+              ))}
             </div>
           )}
 
-          {/* Key Specs Grid in Bento Container */}
-          <div className="grid grid-cols-2 gap-2.5 py-3 border border-[#F0EBE3] text-xs text-[#2D2A26] mb-4 bg-[#FDFBF7] rounded-2xl p-3">
-            <div className="flex items-center gap-2">
-              <Users className="w-4 h-4 text-[#927148] shrink-0" />
-              <div>
-                <span className="text-[#2D2A26]/50 block text-[10px] uppercase font-bold">Capacity</span>
-                <span className="font-semibold text-[#2D2A26] text-xs">{room.occupancy}</span>
-              </div>
-            </div>
-            <div className="flex items-center gap-2">
-              <Bed className="w-4 h-4 text-[#927148] shrink-0" />
-              <div>
-                <span className="text-[#2D2A26]/50 block text-[10px] uppercase font-bold">Beds</span>
-                <span className="font-semibold text-[#2D2A26] text-xs truncate block" title={room.bedConfig}>
-                  {room.bedConfig}
-                </span>
-              </div>
-            </div>
-            <div className="flex items-center gap-2 col-span-2 pt-1 border-t border-[#EAE4D9]/50">
-              <Bath className="w-4 h-4 text-[#927148] shrink-0" />
-              <div>
-                <span className="text-[#2D2A26]/50 block text-[10px] uppercase font-bold">Bathroom</span>
-                <span className="font-semibold text-[#2D2A26] text-xs">{room.bathroomInfo}</span>
-              </div>
-            </div>
-          </div>
-
-          {/* Room Facilities List */}
-          <div className="mb-5">
-            <p className="text-[10px] font-bold text-[#8B6E4E] uppercase tracking-wider mb-2">
-              Key In-Room Amenities
-            </p>
-            <ul className="grid grid-cols-2 gap-1.5 text-xs text-[#2D2A26]/80">
-              {room.facilities.slice(0, 6).map((facility, idx) => (
-                <li key={idx} className="flex items-center gap-1.5 truncate">
-                  <Check className="w-3.5 h-3.5 text-[#25D366] shrink-0" />
-                  <span className="truncate">{facility}</span>
-                </li>
-              ))}
-            </ul>
+          {/* Mandatory Tariff Notice */}
+          <div className="mb-5 p-3 rounded-2xl bg-[#F0EBE3] border border-[#EAE4D9] text-[#8B6E4E] text-xs font-semibold text-center">
+            {room.tariffNote}
           </div>
         </div>
 
@@ -146,7 +108,7 @@ export const RoomCard: React.FC<RoomCardProps> = ({
           {/* Direct Communication Buttons */}
           <div className="grid grid-cols-2 gap-2">
             <a
-              href={`tel:${dharamshalaConfig.phone}`}
+              href={`tel:${dharamshalaConfig.phoneTel}`}
               className="py-2 px-3 rounded-xl border border-[#EAE4D9] hover:bg-[#FDFBF7] text-[#2D2A26] font-semibold text-xs flex items-center justify-center gap-1.5 transition-colors"
             >
               <Phone className="w-3.5 h-3.5 text-[#25D366]" />

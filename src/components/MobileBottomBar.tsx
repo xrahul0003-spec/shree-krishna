@@ -16,7 +16,7 @@ export const MobileBottomBar: React.FC<MobileBottomBarProps> = ({ onBookClick })
         {/* CALL */}
         <a
           id="mobile-call-btn"
-          href={`tel:${dharamshalaConfig.phone}`}
+          href={`tel:${dharamshalaConfig.phoneTel}`}
           className="flex flex-col items-center justify-center py-2 px-1 rounded-2xl text-[#2D2A26] hover:bg-[#F0EBE3] active:bg-[#EAE4D9] transition-colors min-h-[46px]"
           aria-label="Call Dharamshala"
         >

@@ -3,19 +3,16 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-/**
- * @license
- * SPDX-License-Identifier: Apache-2.0
- */
-
 import React, { useState } from 'react';
 import { Header } from './components/Header';
 import { Hero } from './components/Hero';
+import { QuickBookingBar } from './components/QuickBookingBar';
 import { About } from './components/About';
 import { Rooms } from './components/Rooms';
 import { RoomDetailsModal } from './components/RoomDetailsModal';
 import { Facilities } from './components/Facilities';
 import { WhyChooseUs } from './components/WhyChooseUs';
+import { GuestExperience } from './components/GuestExperience';
 import { Gallery } from './components/Gallery';
 import { Location } from './components/Location';
 import { NearbyPlaces } from './components/NearbyPlaces';
@@ -49,14 +46,23 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#faf8f5] text-stone-800">
+    <div className="min-h-screen flex flex-col bg-[#FDFBF7] text-[#2D2A26]">
       {/* Sticky Header */}
-      <Header onBookClick={() => scrollToBooking()} />
+      <Header
+        onBookClick={() => scrollToBooking()}
+        onOpenLegal={(doc) => setLegalModalDoc(doc)}
+      />
 
       {/* Main Content Sections */}
       <main className="flex-1">
         {/* Hero Section */}
-        <Hero onViewRooms={scrollToRooms} />
+        <Hero
+          onViewRooms={scrollToRooms}
+          onEnquireNow={() => scrollToBooking()}
+        />
+
+        {/* Quick Booking Bar */}
+        <QuickBookingBar onCheckAvailability={() => scrollToBooking()} />
 
         {/* About Section */}
         <About />
@@ -72,6 +78,9 @@ export default function App() {
 
         {/* Why Stay With Us */}
         <WhyChooseUs />
+
+        {/* Guest Experience & Reviews */}
+        <GuestExperience onBookClick={() => scrollToBooking()} />
 
         {/* Gallery Section */}
         <Gallery />
@@ -123,4 +132,3 @@ export default function App() {
     </div>
   );
 }
-

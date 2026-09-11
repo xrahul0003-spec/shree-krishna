@@ -3,36 +3,24 @@ import { Sparkles, X, ChevronLeft, ChevronRight, Eye, Image as ImageIcon } from 
 import { GalleryItem } from '../types';
 import { dharamshalaConfig } from '../data/dharamshalaData';
 
-type CategoryType = 'All' | 'Property' | 'Rooms' | 'Common Areas' | 'Location';
+type CategoryType = 'All' | 'Rooms' | 'Temples' | 'Location' | 'Property';
 
 export const Gallery: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState<CategoryType>('All');
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
-  const [failedImages, setFailedImages] = useState<Record<string, boolean>>({});
 
   const categories: CategoryType[] = [
     'All',
-    'Property',
     'Rooms',
-    'Common Areas',
+    'Temples',
     'Location',
+    'Property',
   ];
 
   const filteredImages = dharamshalaConfig.galleryImages.filter((item) => {
     if (selectedCategory === 'All') return true;
     return item.category === selectedCategory;
   });
-
-  const handleImageError = (id: string) => {
-    setFailedImages((prev) => ({ ...prev, [id]: true }));
-  };
-
-  const getImageSrc = (item: GalleryItem) => {
-    if (failedImages[item.id] && item.fallbackUrl) {
-      return item.fallbackUrl;
-    }
-    return item.imageUrl;
-  };
 
   const openLightbox = (index: number) => {
     setLightboxIndex(index);
@@ -76,13 +64,13 @@ export const Gallery: React.FC = () => {
         <div className="text-center max-w-2xl mx-auto mb-10">
           <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-[#F0EBE3] text-[#8B6E4E] text-xs font-semibold uppercase tracking-wider mb-3">
             <Sparkles className="w-3.5 h-3.5 text-[#927148]" />
-            Visual Tour & Darshan
+            Visual Tour of Ayodhya Dham
           </div>
           <h2 className="font-serif text-3xl sm:text-4xl font-bold text-[#2D2A26] mb-4">
-            Photo Gallery
+            Photo Gallery of Birla Dharamshala, Ayodhya
           </h2>
           <p className="text-[#2D2A26]/75 text-sm sm:text-base leading-relaxed">
-            Authentic photographs of Shree Krishna Dharamshala Trust premises, our 1933 heritage, in-house Radha Krishna Mandir, clean guest rooms, and holy Varanasi Ghats.
+            Explore rooms, facilities and surroundings near Ram Mandir, Ayodhya
           </p>
 
           {/* Bento Category Filters */}
@@ -104,129 +92,113 @@ export const Gallery: React.FC = () => {
           </div>
         </div>
 
-        {/* Bento Gallery Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-          {filteredImages.map((image, idx) => {
-            const currentSrc = getImageSrc(image);
-            return (
-              <div
-                key={image.id}
-                onClick={() => openLightbox(idx)}
-                className="group relative h-64 sm:h-72 lg:h-80 rounded-3xl overflow-hidden bg-[#E5E0D5] cursor-pointer shadow-xs border border-[#EAE4D9] hover:border-[#927148] transition-all"
-              >
-                <img
-                  src={currentSrc}
-                  alt={image.title}
-                  onError={() => handleImageError(image.id)}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  loading="lazy"
-                  referrerPolicy="no-referrer"
-                />
-
-                {/* Top Badge */}
-                <div className="absolute top-3.5 left-3.5 z-10 flex items-center gap-2">
-                  <span className="px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-[#2D2A26]/80 text-[#FDFBF7] backdrop-blur-md border border-white/20">
-                    {image.badge || image.category}
-                  </span>
-                </div>
-
-                {/* Bottom Overlay Info */}
-                <div className="absolute inset-0 bg-gradient-to-t from-[#2D2A26]/95 via-[#2D2A26]/40 to-transparent opacity-90 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity flex flex-col justify-end p-5 text-white">
-                  <span className="text-[11px] font-semibold text-[#D4AF37] tracking-wide mb-0.5">
-                    {image.titleHindi}
-                  </span>
-                  <p className="font-serif text-base sm:text-lg font-bold leading-snug">
-                    {image.title}
-                  </p>
-                  {image.description && (
-                    <p className="text-xs text-white/80 line-clamp-2 mt-1 leading-relaxed">
-                      {image.description}
-                    </p>
-                  )}
-                  <div className="mt-2.5 inline-flex items-center gap-1.5 text-xs text-[#FDFBF7] font-medium">
-                    <Eye className="w-3.5 h-3.5 text-[#D4AF37]" /> Click to view full photograph
-                  </div>
-                </div>
-              </div>
-            );
-          })}
-        </div>
-
-        {/* Lightbox Modal */}
-        {lightboxIndex !== null && filteredImages[lightboxIndex] && (
-          <div
-            className="fixed inset-0 z-50 bg-[#2D2A26]/95 backdrop-blur-md flex items-center justify-center p-4 animate-in fade-in duration-200"
-            onClick={closeLightbox}
-          >
-            {/* Close */}
-            <button
-              type="button"
-              onClick={closeLightbox}
-              className="absolute top-5 right-5 z-50 p-2.5 rounded-full bg-white/10 text-white hover:bg-white/20 transition-colors cursor-pointer"
-              aria-label="Close Lightbox"
-            >
-              <X className="w-6 h-6" />
-            </button>
-
-            {/* Navigation Buttons */}
-            {filteredImages.length > 1 && (
-              <>
-                <button
-                  type="button"
-                  onClick={prevImage}
-                  className="absolute left-4 top-1/2 -translate-y-1/2 z-50 p-3 rounded-full bg-white/10 text-white hover:bg-white/20 transition-colors cursor-pointer"
-                  aria-label="Previous Image"
-                >
-                  <ChevronLeft className="w-6 h-6" />
-                </button>
-                <button
-                  type="button"
-                  onClick={nextImage}
-                  className="absolute right-4 top-1/2 -translate-y-1/2 z-50 p-3 rounded-full bg-white/10 text-white hover:bg-white/20 transition-colors cursor-pointer"
-                  aria-label="Next Image"
-                >
-                  <ChevronRight className="w-6 h-6" />
-                </button>
-              </>
-            )}
-
-            {/* Modal Content */}
+        {/* Gallery Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          {filteredImages.map((image, idx) => (
             <div
-              className="max-w-4xl max-h-[88vh] flex flex-col items-center"
-              onClick={(e) => e.stopPropagation()}
+              key={image.id}
+              onClick={() => openLightbox(idx)}
+              className="group relative h-64 sm:h-72 rounded-3xl overflow-hidden bg-[#E5E0D5] cursor-pointer shadow-xs border border-[#EAE4D9] hover:border-[#927148] transition-all"
             >
               <img
-                src={getImageSrc(filteredImages[lightboxIndex])}
-                alt={filteredImages[lightboxIndex].title}
-                onError={() => handleImageError(filteredImages[lightboxIndex].id)}
-                className="max-h-[68vh] w-auto max-w-full rounded-2xl object-contain shadow-2xl border border-white/10"
-                referrerPolicy="no-referrer"
+                src={image.imageUrl}
+                alt={image.title}
+                className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                loading="lazy"
               />
-              <div className="mt-4 text-center text-white px-4">
-                <div className="flex items-center justify-center gap-2 mb-1.5">
-                  <span className="inline-block px-3 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-[#D4AF37] text-stone-950">
-                    {filteredImages[lightboxIndex].badge || filteredImages[lightboxIndex].category}
-                  </span>
-                  <span className="text-xs text-[#D4AF37] font-medium">
-                    {filteredImages[lightboxIndex].titleHindi}
+
+              {/* Gradient Overlay */}
+              <div className="absolute inset-0 bg-gradient-to-t from-[#2D2A26]/90 via-[#2D2A26]/20 to-transparent opacity-80 group-hover:opacity-95 transition-opacity" />
+
+              {/* Badge */}
+              {image.badge && (
+                <div className="absolute top-3 left-3">
+                  <span className="px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-white/90 text-[#2D2A26] backdrop-blur-xs">
+                    {image.badge}
                   </span>
                 </div>
-                <h3 className="font-serif text-lg sm:text-xl font-bold">
-                  {filteredImages[lightboxIndex].title}
+              )}
+
+              {/* Hover Zoom Icon */}
+              <div className="absolute top-3 right-3 w-8 h-8 rounded-full bg-white/80 backdrop-blur-xs flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                <Eye className="w-4 h-4 text-[#2D2A26]" />
+              </div>
+
+              {/* Title & Description */}
+              <div className="absolute bottom-0 inset-x-0 p-4 text-white">
+                <h3 className="font-serif font-bold text-sm sm:text-base leading-snug mb-1">
+                  {image.title}
                 </h3>
-                {filteredImages[lightboxIndex].description && (
-                  <p className="text-xs sm:text-sm text-stone-200 max-w-2xl mx-auto mt-1 leading-relaxed">
-                    {filteredImages[lightboxIndex].description}
+                {image.description && (
+                  <p className="text-[11px] text-[#FDFBF7]/80 line-clamp-2 leading-relaxed">
+                    {image.description}
                   </p>
                 )}
-                <p className="text-xs text-stone-400 mt-2">
-                  Photo {lightboxIndex + 1} of {filteredImages.length}
-                </p>
               </div>
             </div>
-          </div>
-        )}
+          ))}
+        </div>
       </div>
+
+      {/* Lightbox Modal */}
+      {lightboxIndex !== null && (
+        <div
+          className="fixed inset-0 z-50 bg-black/90 backdrop-blur-md flex items-center justify-center p-4 sm:p-6"
+          onClick={closeLightbox}
+        >
+          {/* Close button */}
+          <button
+            type="button"
+            onClick={closeLightbox}
+            className="absolute top-4 right-4 z-50 w-11 h-11 rounded-full bg-white/20 hover:bg-white/30 text-white flex items-center justify-center transition-colors cursor-pointer"
+            aria-label="Close fullscreen view"
+          >
+            <X className="w-6 h-6" />
+          </button>
+
+          {/* Prev Button */}
+          <button
+            type="button"
+            onClick={prevImage}
+            className="absolute left-4 top-1/2 -translate-y-1/2 z-50 w-11 h-11 rounded-full bg-white/20 hover:bg-white/30 text-white flex items-center justify-center transition-colors cursor-pointer"
+            aria-label="Previous photo"
+          >
+            <ChevronLeft className="w-6 h-6" />
+          </button>
+
+          {/* Next Button */}
+          <button
+            type="button"
+            onClick={nextImage}
+            className="absolute right-4 top-1/2 -translate-y-1/2 z-50 w-11 h-11 rounded-full bg-white/20 hover:bg-white/30 text-white flex items-center justify-center transition-colors cursor-pointer"
+            aria-label="Next photo"
+          >
+            <ChevronRight className="w-6 h-6" />
+          </button>
+
+          {/* Main Lightbox Content */}
+          <div
+            className="max-w-4xl max-h-[85vh] flex flex-col items-center justify-center"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <img
+              src={filteredImages[lightboxIndex].imageUrl}
+              alt={filteredImages[lightboxIndex].title}
+              className="max-w-full max-h-[70vh] object-contain rounded-2xl shadow-2xl"
+            />
+            <div className="text-center text-white mt-4 max-w-xl">
+              <h3 className="font-serif text-lg sm:text-xl font-bold mb-1">
+                {filteredImages[lightboxIndex].title}
+              </h3>
+              {filteredImages[lightboxIndex].description && (
+                <p className="text-xs sm:text-sm text-stone-300">
+                  {filteredImages[lightboxIndex].description}
+                </p>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 };

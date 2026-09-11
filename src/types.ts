@@ -2,18 +2,16 @@ export interface RoomType {
   id: string;
   name: string;
   category: 'ac' | 'non-ac' | 'family';
-  price: string;
-  deposit?: string;
-  occupancy: string;
-  bedConfig: string;
+  categoryLabel: string;
+  tariffNote: string;
   isAc: boolean;
-  bathroomInfo: string;
   shortDescription: string;
   fullDescription: string;
   featuredImage: string;
   galleryImages: string[];
-  facilities: string[];
-  rules: string[];
+  features?: string[];
+  bedType?: string;
+  occupancy?: string;
 }
 
 export interface FacilityItem {
@@ -28,7 +26,7 @@ export interface GalleryItem {
   id: string;
   title: string;
   titleHindi?: string;
-  category: 'Property' | 'Rooms' | 'Family Room' | 'Facilities' | 'Common Areas' | 'Location' | 'Temple & Darshan';
+  category: 'Property' | 'Rooms' | 'Location' | 'Temples';
   imageUrl: string;
   fallbackUrl?: string;
   description?: string;
@@ -38,38 +36,50 @@ export interface GalleryItem {
 export interface NearbyPlaceItem {
   id: string;
   name: string;
-  distance: string;
-  approxTravelTime: string;
-  note?: string;
+  label: string;
+  distance?: string;
+  description: string;
+  imageUrl?: string;
+}
+
+export interface ReviewItem {
+  id: string;
+  name: string;
+  role: string;
+  rating: number;
+  comment: string;
+  date?: string;
+}
+
+export interface WhyChooseUsItem {
+  id: string;
+  number: string;
+  title: string;
+  desc: string;
+  detail: string;
+  iconName: string;
 }
 
 export interface DharamshalaConfig {
   businessName: string;
+  businessNameHindi: string;
   tagline: string;
   businessType: string;
   addressHindi: string;
   addressEnglish: string;
   landmark: string;
   phone: string;
+  phoneTel: string;
   phoneDisplay: string;
   whatsapp: string;
-  email?: string;
+  website: string;
   mapUrl: string;
   googleMapEmbedQuery: string;
-  checkInTime: string;
-  checkOutTime: string;
   noticeNotes: string[];
-  roomPrices: {
-    AC_ROOM_PRICE: string;
-    NON_AC_ROOM_PRICE: string;
-    FAMILY_ROOM_PRICE: string;
-    AC_ROOM_DEPOSIT: string;
-    NON_AC_ROOM_DEPOSIT: string;
-    FAMILY_ROOM_DEPOSIT: string;
-  };
-  familyRoomOccupancy: string;
   roomTypes: RoomType[];
   propertyFacilities: FacilityItem[];
+  whyChoosePoints: WhyChooseUsItem[];
+  guestReviews: ReviewItem[];
   galleryImages: GalleryItem[];
   nearbyPlaces: NearbyPlaceItem[];
 }
